@@ -11,31 +11,23 @@ final class  Network {
     
     static let shared = Network()
     
-    func fetchNewsList(searchLabel: String, onCompletion: @escaping ([Character]) -> ()) {
-
+    func fetchNewsList(onCompletion: @escaping ([Result]?) -> ()) {
         guard let url = URL(string: "https://rickandmortyapi.com/api/character") else {
-            print("URL's with non English symbols are not working yet")
             return
         }
-        
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data else {
                 print("data was nil")
                 return
             }
-            
-            guard let Characters = try? JSONDecoder().decode(Character.self, from: data) else {
+            guard let ListOfCharacters = try? JSONDecoder().decode(PostModel.self, from: data) else {
                     print("couldn't decode JSON")
                 return
             }
-            
-//            onCompletion(ListOfCharacters.)
-
+            onCompletion(ListOfCharacters.results)
         }
-        
         task.resume()
     }
-    
 }
 
 

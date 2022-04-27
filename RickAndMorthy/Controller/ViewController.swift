@@ -15,57 +15,33 @@
 import UIKit
 
 class ViewController: UIViewController {
+//    let listOfChar = ["Rick", "Jerry", "BAtt", "a4", "a5", "a6", "a7", "a8", "a9", "a10", "Rick", "Jerry", "BAtt", "a4", "a5", "a6", "a7", "a8", "a9", "a10"]
     
-    let listOfChar = ["Rick", "Jerry", "BAtt", "a4", "a5", "a6", "a7", "a8", "a9", "a10"]
+    var listOfChar : [Result] = []
     
-//    let tableView = UITableView()
-    let tableView = UITableView()
-    
-//    lazy var tableView: UITableView = {
-//            let tableView = UITableView()
-//            tableView.delegate = self
-//            tableView.dataSource = self
-//            tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-//            tableView.translatesAutoresizingMaskIntoConstraints =  false
-//            return tableView
-//    }()
-    
+    private let tableView = UITableView(frame: .zero, style: .grouped)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setNavigationItems()
-        setTableView()
-    }
-}
-
-
-extension ViewController {
-    func setTableView() {
-        view.addSubview(tableView)
+        setTableView(on: tableView)
         
-        tableView.translatesAutoresizingMaskIntoConstraints = false //disable costr
-        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        
-        tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell_id")
-    }
-}
-
-extension ViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listOfChar.count
+        fetchDataFromAPI()
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell_id")
-        let name = listOfChar[indexPath.row]
-        
-        cell?.textLabel?.text = name
-        
-        return cell ?? UITableViewCell()
+    func fetchDataFromAPI() {
+        let anonymousFunction = { (fetchedCharacterList: [Result]?) in
+            DispatchQueue.main.async {
+                self.listOfChar = fetchedCharacterList!
+                
+                print(fetchedCharacterList)
+                
+                self.tableView.reloadData()
+            }
+        }
+        Network.shared.fetchNewsList(onCompletion: anonymousFunction)
+        tableView.reloadData()
     }
 }
+
