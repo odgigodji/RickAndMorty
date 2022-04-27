@@ -17,9 +17,9 @@ import UIKit
 class ViewController: UIViewController {
 //    let listOfChar = ["Rick", "Jerry", "BAtt", "a4", "a5", "a6", "a7", "a8", "a9", "a10", "Rick", "Jerry", "BAtt", "a4", "a5", "a6", "a7", "a8", "a9", "a10"]
     
-    var listOfChar : [Result] = []
+    var listOfCharacters = [Result]()
     
-    private let tableView = UITableView(frame: .zero, style: .grouped)
+    let tableView = UITableView(frame: .zero, style: .grouped)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,18 +30,6 @@ class ViewController: UIViewController {
         fetchDataFromAPI()
     }
     
-    func fetchDataFromAPI() {
-        let anonymousFunction = { (fetchedCharacterList: [Result]?) in
-            DispatchQueue.main.async {
-                self.listOfChar = fetchedCharacterList!
-                
-                print(fetchedCharacterList)
-                
-                self.tableView.reloadData()
-            }
-        }
-        Network.shared.fetchNewsList(onCompletion: anonymousFunction)
-        tableView.reloadData()
-    }
+    
 }
 

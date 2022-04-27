@@ -34,12 +34,12 @@ extension ViewController : UITableViewDataSource {
     
    //MARK: - set cells
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return listOfChar.count
+            return listOfCharacters.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell_id")
-        let name = listOfChar[indexPath.row]
+        let name = listOfCharacters[indexPath.row]
 
         cell?.textLabel?.text = name.name
 
