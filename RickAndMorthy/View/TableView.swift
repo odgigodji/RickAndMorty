@@ -34,15 +34,20 @@ extension ViewController : UITableViewDataSource {
     
    //MARK: - set cells
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return listOfCharacters.count
+//        guard let fetchedData = self.fetchedData else { return 0 }
+//        guard let listOfCharacters = fetchedData.result else { return 0 }
+        return listOfCharacters.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell_id")
-        let name = listOfCharacters[indexPath.row]
+        guard let name = listOfCharacters[indexPath.row] else {
+            return UITableViewCell()
+        }
 
         cell?.textLabel?.text = name.name
 
         return cell ?? UITableViewCell()
     }
+    
 }

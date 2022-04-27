@@ -17,7 +17,8 @@ import UIKit
 class ViewController: UIViewController {
 //    let listOfChar = ["Rick", "Jerry", "BAtt", "a4", "a5", "a6", "a7", "a8", "a9", "a10", "Rick", "Jerry", "BAtt", "a4", "a5", "a6", "a7", "a8", "a9", "a10"]
     
-    var listOfCharacters = [Result]()
+    var listOfCharacters = [Result?]()
+    var fetchedData: PostModel?
     
     let tableView = UITableView(frame: .zero, style: .grouped)
     
@@ -27,7 +28,24 @@ class ViewController: UIViewController {
         setNavigationItems()
         setTableView(on: tableView)
         
-        fetchDataFromAPI()
+//        fetchDataFromAPI()
+        fetchAllFromAPI()
+        
+        guard let fetchedData = fetchedData else {
+            print("fetchedData is nil")
+            return
+        }
+        
+        print("=======INFO=======")
+        print(fetchedData.info!)
+//        guard let result = fetchedData.results else {
+//            print("result is nil")
+//            return
+//        }
+//        listOfCharacters = result
+//        print("-------+++++")
+//        print(result)
+//        tableView.reloadData()
     }
     
     

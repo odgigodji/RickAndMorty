@@ -11,28 +11,11 @@ final class  Network {
     
     static let shared = Network()
     
+    var fetchedData: PostModel?
+    
     private var url: String = "https://rickandmortyapi.com/api/character"
     
-    func fetchCharactersList(onCompletion: @escaping ([Result]?) -> ()) {
-        guard let url = URL(string: url) else {
-            return
-        }
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let data = data else {
-                print("data was nil")
-                return
-            }
-            guard let ListOfCharacters = try? JSONDecoder().decode(PostModel.self, from: data) else {
-                    print("couldn't decode JSON")
-                return
-            }
-            onCompletion(ListOfCharacters.results)
-        }
-        task.resume()
-    }
-    
-    
-//    func fetchCharactersList(onCompletion: @escaping (PostModel?) -> ()) {
+//    func fetchCharactersList(onCompletion: @escaping ([Result]?) -> ()) {
 //        guard let url = URL(string: url) else {
 //            return
 //        }
@@ -49,22 +32,64 @@ final class  Network {
 //        }
 //        task.resume()
 //    }
+    
+    
+    func fetchPostModel(onCompletion: @escaping (PostModel?) -> ()) {
+        guard let url = URL(string: url) else {
+            return
+        }
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let data = data else {
+                print("data was nil")
+                return
+            }
+            guard let PostModel = try? JSONDecoder().decode(PostModel.self, from: data) else {
+                    print("couldn't decode JSON")
+                return
+            }
+            onCompletion(PostModel)
+        }
+        task.resume()
+    }
 }
 
+//extension ViewController {
+//    func fetchDataFromAPI() {
+//        let anonymousFunction = { (fetchedCharacterList: [Result]?) in
+//            DispatchQueue.main.async {
+//                self.listOfCharacters = fetchedCharacterList!
+//
+////                print(fetchedCharacterList)
+//
+//                self.tableView.reloadData()
+//            }
+//        }
+//        Network.shared.fetchCharactersList(onCompletion: anonymousFunction)
+//        self.tableView.reloadData()
+//    }
+//}
+
+
 extension ViewController {
-    func fetchDataFromAPI() {
-        let anonymousFunction = { (fetchedCharacterList: [Result]?) in
+    func fetchAllFromAPI() {
+        let anonymousFunction = { (fetchedData: PostModel?) in
             DispatchQueue.main.async {
-                self.listOfCharacters = fetchedCharacterList!
+                self.fetchedData = fetchedData
                 
-                print(fetchedCharacterList)
+                print("-inFetchAllfromAPI")
+                print(self.fetchedData!.info)
+                print("------")
+                print(self.fetchedData!.results)
+                
+                self.listOfCharacters = fetchedData!.results!
                 
                 self.tableView.reloadData()
             }
         }
-        Network.shared.fetchCharactersList(onCompletion: anonymousFunction)
+        Network.shared.fetchPostModel(onCompletion: anonymousFunction)
         self.tableView.reloadData()
     }
 }
+
 
 
