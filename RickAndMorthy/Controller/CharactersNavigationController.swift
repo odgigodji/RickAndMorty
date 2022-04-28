@@ -14,7 +14,7 @@
 
 import UIKit
 
-final class MainController: UIViewController {
+final class CharactersNavigationController: UIViewController {
     
 //MARK: - list of constants
     
@@ -48,8 +48,9 @@ final class MainController: UIViewController {
     }
 }
 
+
 // MARK: - Navigation Controller configure
-extension MainController {
+extension CharactersNavigationController {
     
     private func setNavigationBar() {
         navigationItem.title = "Rick and Morty"
@@ -71,7 +72,7 @@ extension MainController {
 }
 
 //MARK: - tableview configurations
-extension MainController : UITableViewDataSource {
+extension CharactersNavigationController : UITableViewDataSource {
     
     //MARK: - set constraints
     private func setConstraints(on tableView: UITableView) {
@@ -107,7 +108,7 @@ extension MainController : UITableViewDataSource {
 }
 
 // MARK: - network service
-extension MainController {
+extension CharactersNavigationController {
     func fetchAllFromAPI(from url: String) {
         let anonymousFunction = { (fetchedData: PostModel?) in
             DispatchQueue.main.async {
