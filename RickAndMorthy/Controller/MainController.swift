@@ -14,7 +14,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MainController: UIViewController {
     
     var listOfCharacters = [Result?]()
     
@@ -45,14 +45,17 @@ class ViewController: UIViewController {
 }
 
 // MARK: - Navigation Controller configure
-extension ViewController {
+extension MainController {
     
-    func setNavigationItems() {
+    private func setNavigationItems() {
 //        view.backgroundColor = .systemGreen
 //        navigationItem.rightBarButtonItem?.title = "next"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next page", style: .plain, target: self, action: #selector(addTapped))
 
+        
         navigationItem.title = "Rick and Morty"
+        self.setNavigationBarButtons()
+
+
 //        navigationController?.navigationBar.setBackgroundImage(UIImage(named: "Image"), for: .default)
 //        navigationController?.hidesBarsOnTap = true
 //        navigationController?.hidesBarsOnSwipe = true
@@ -60,14 +63,23 @@ extension ViewController {
 //        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-    @objc func addTapped() {
+    private func setNavigationBarButtons() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next page", style: .plain, target: self, action: #selector(nextPageTapped))
+
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Prev page", style: .plain, target: self, action: #selector(prevPageTapped))
+    }
+    
+    @objc func nextPageTapped() {
         fetchAllFromAPI(from: page2)
-        print("tap")
+    }
+    
+    @objc func prevPageTapped() {
+        fetchAllFromAPI(from: url)
     }
 }
 
 //MARK: - tableview configurations
-extension ViewController : UITableViewDataSource {
+extension MainController : UITableViewDataSource {
     
     //MARK: - set constraints
     private func setConstraints(on tableView: UITableView) {
@@ -103,7 +115,7 @@ extension ViewController : UITableViewDataSource {
 }
 
 // MARK: - network service
-extension ViewController {
+extension MainController {
     func fetchAllFromAPI(from url: String) {
         let anonymousFunction = { (fetchedData: PostModel?) in
             DispatchQueue.main.async {
