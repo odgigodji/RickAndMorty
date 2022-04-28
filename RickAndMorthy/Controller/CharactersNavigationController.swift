@@ -22,7 +22,7 @@ final class CharactersNavigationController: UIViewController {
     var info : Info?
     var fetchedData : PostModel?
     private var url: String = "https://rickandmortyapi.com/api/character"
-    private var page2: String = "https://rickandmortyapi.com/api/character?page=2"
+//    private var page2: String = "https://rickandmortyapi.com/api/character?page=2"
     private let tableView = UITableView(frame: .zero, style: .grouped)
 
 //MARK: - MainController methods
@@ -62,6 +62,7 @@ extension CharactersNavigationController {
     
     @objc func nextPageTapped() {
         guard let nextPage = info!.next else {
+//            navigationItem.rightBarButtonItem?.title = ""
             return
         }
         fetchAllFromAPI(from: nextPage)
