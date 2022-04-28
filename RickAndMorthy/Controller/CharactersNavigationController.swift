@@ -57,22 +57,24 @@ extension CharactersNavigationController {
     private func setNavigationBarButtons() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next page", style: .plain, target: self, action: #selector(nextPageTapped))
 
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Prev page", style: .plain, target: self, action: #selector(prevPageTapped))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(prevPageTapped))
     }
     
     @objc func nextPageTapped() {
         guard let nextPage = pages!.next else {
-//            navigationItem.rightBarButtonItem?.title = ""
+            navigationItem.rightBarButtonItem?.title = ""
             return
         }
+        navigationItem.leftBarButtonItem?.title = "Prev page"
         fetchAllData(from: nextPage)
     }
     
     @objc func prevPageTapped() {
         guard let prevPage = pages!.prev else {
-//            navigationItem.rightBarButtonItem?.title = ""
+            navigationItem.leftBarButtonItem?.title = ""
             return
         }
+        navigationItem.rightBarButtonItem?.title = "Next page"
         fetchAllData(from: prevPage)
     }
 }
