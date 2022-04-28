@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		FA35FA5E28172E220039EE20 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA35FA5D28172E220039EE20 /* Network.swift */; };
-		FA35FA8B28195AFF0039EE20 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA35FA8A28195AFF0039EE20 /* Character.swift */; };
 		FA35FA8F2819897D0039EE20 /* CharList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA35FA8E2819897D0039EE20 /* CharList.swift */; };
 		FA6ADD3E28147F2F00E7D058 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6ADD3D28147F2F00E7D058 /* AppDelegate.swift */; };
 		FA6ADD4028147F2F00E7D058 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6ADD3F28147F2F00E7D058 /* SceneDelegate.swift */; };
@@ -20,7 +19,6 @@
 
 /* Begin PBXFileReference section */
 		FA35FA5D28172E220039EE20 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
-		FA35FA8A28195AFF0039EE20 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		FA35FA8E2819897D0039EE20 /* CharList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharList.swift; sourceTree = "<group>"; };
 		FA6ADD3A28147F2F00E7D058 /* RickAndMorthy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMorthy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA6ADD3D28147F2F00E7D058 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -61,7 +59,6 @@
 		FA35FA8728195A2B0039EE20 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FA35FA8A28195AFF0039EE20 /* Character.swift */,
 				FA35FA8E2819897D0039EE20 /* CharList.swift */,
 			);
 			path = Model;
@@ -191,7 +188,6 @@
 				FA6ADD3E28147F2F00E7D058 /* AppDelegate.swift in Sources */,
 				FA6ADD4028147F2F00E7D058 /* SceneDelegate.swift in Sources */,
 				FA35FA8F2819897D0039EE20 /* CharList.swift in Sources */,
-				FA35FA8B28195AFF0039EE20 /* Character.swift in Sources */,
 				FA35FA5E28172E220039EE20 /* Network.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

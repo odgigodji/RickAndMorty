@@ -14,53 +14,45 @@
 
 import UIKit
 
-class MainController: UIViewController {
+final class MainController: UIViewController {
+    
+//MARK: - list of constants
     
     var listOfCharacters = [Result?]()
-    
     var fetchedData : PostModel?
-    
     private var url: String = "https://rickandmortyapi.com/api/character"
     private var page2: String = "https://rickandmortyapi.com/api/character?page=2"
-    
     private let tableView = UITableView(frame: .zero, style: .grouped)
+
+//MARK: - MainController methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setNavigationItems()
-        setTableView(on: tableView)
-        fetchAllFromAPI(from: url)
+        self.setNavigationItems()
+        self.setTableView(on: tableView)
+        self.fetchAllFromAPI(from: url)
 //        url = page2
 //        fetchAllFromAPI(from: page2)
         
     }
     
-    func setTableView(on tableView: UITableView) {
+    private func setTableView(on tableView: UITableView) {
         view.addSubview(tableView)
-        
-        setConstraints(on: tableView)
-        registerCell(on: tableView)
+        self.setConstraints(on: tableView)
+        self.registerCell(on: tableView)
+    }
+    
+    private func setNavigationItems() {
+        self.setNavigationBar()
+        self.setNavigationBarButtons()
     }
 }
 
 // MARK: - Navigation Controller configure
 extension MainController {
     
-    private func setNavigationItems() {
-//        view.backgroundColor = .systemGreen
-//        navigationItem.rightBarButtonItem?.title = "next"
-
-        
+    private func setNavigationBar() {
         navigationItem.title = "Rick and Morty"
-        self.setNavigationBarButtons()
-
-
-//        navigationController?.navigationBar.setBackgroundImage(UIImage(named: "Image"), for: .default)
-//        navigationController?.hidesBarsOnTap = true
-//        navigationController?.hidesBarsOnSwipe = true
-//        navigationController?.navigationBar.backgroundColor = .systemGray5
-//        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     private func setNavigationBarButtons() {
