@@ -10,28 +10,32 @@ import UIKit
 final class CharacterCell: UITableViewCell {
 
 //MARK: - list of variables
-    let courseName = UILabel()
+    let nameLabel = UILabel()
     let species = UILabel()
     let gender = UILabel()
-    let avatar = UIImage()
-    
+    let avatarImageView = UIImageView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        //image
+//        avatar.frame = contentView.bounds
+        
+        
+        
+        //-------
+        
         // Set any attributes of your UI components here.
-        courseName.translatesAutoresizingMaskIntoConstraints = false
-        courseName.font = UIFont.systemFont(ofSize: 20)
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        nameLabel.font = UIFont.systemFont(ofSize: 20)
         
         // Add the UI components
-        contentView.addSubview(courseName)
+        contentView.addSubview(nameLabel)
+        contentView.addSubview(avatarImageView)
         
-        NSLayoutConstraint.activate([
-            courseName.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            courseName.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
-            courseName.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            courseName.heightAnchor.constraint(equalToConstant: 50)
-        ])
+        self.setNameLabel()
+        self.setAvatarImageView()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -39,9 +43,31 @@ final class CharacterCell: UITableViewCell {
     }
 }
 
+//MARK: - set constraints
+extension CharacterCell {
+    
+    private func setNameLabel() {
+        NSLayoutConstraint.activate([
+            nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
+            nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            nameLabel.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+    
+    private func setAvatarImageView() {
+        NSLayoutConstraint.activate([
+            avatarImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            avatarImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
+            avatarImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            avatarImageView.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+}
+
 extension CharacterCell {
     func fillCharacterCell(from character: Result) {
-        self.courseName.text = character.name
+        self.nameLabel.text = character.name
         self.gender.text = character.gender
     }
 }

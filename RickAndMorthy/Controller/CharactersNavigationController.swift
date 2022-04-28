@@ -100,8 +100,6 @@ extension CharactersNavigationController : UITableViewDataSource {
     
    //MARK: - table view data source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        guard let fetchedData = self.fetchedData else { return 0 }
-//        guard let listOfCharacters = fetchedData.result else { return 0 }
         return listOfCharacters.count
     }
     
@@ -112,7 +110,6 @@ extension CharactersNavigationController : UITableViewDataSource {
         }
         
         cell.fillCharacterCell(from: character)
-        
         return cell
     }
 }
