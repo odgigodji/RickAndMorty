@@ -13,7 +13,7 @@ final class  Network {
     
 //    var fetchedData: PostModel?
     
-    fileprivate var url: String = "https://rickandmortyapi.com/api/character"
+//    fileprivate var url: String = "https://rickandmortyapi.com/api/character"
     
 //    func fetchCharactersList(onCompletion: @escaping ([Result]?) -> ()) {
 //        guard let url = URL(string: url) else {
@@ -34,7 +34,7 @@ final class  Network {
 //    }
     
     
-    func fetchPostModel(onCompletion: @escaping (PostModel?) -> ()) {
+    func fetchPostModel(url: String, onCompletion: @escaping (PostModel?) -> ()) {
         guard let url = URL(string: url) else {
             return
         }

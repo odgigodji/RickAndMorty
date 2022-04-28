@@ -15,11 +15,12 @@
 import UIKit
 
 class ViewController: UIViewController {
-//    let listOfChar = ["Rick", "Jerry", "BAtt", "a4", "a5", "a6", "a7", "a8", "a9", "a10", "Rick", "Jerry", "BAtt", "a4", "a5", "a6", "a7", "a8", "a9", "a10"]
     
     var listOfCharacters = [Result?]()
-    var fetchedData: PostModel?
-//    var url: String = "https://rickandmortyapi.com/api/character"
+    
+    var fetchedData : PostModel?
+    
+    private var url: String = "https://rickandmortyapi.com/api/character"
     
     private let tableView = UITableView(frame: .zero, style: .grouped)
     
@@ -28,8 +29,8 @@ class ViewController: UIViewController {
         
         setNavigationItems()
         setTableView(on: tableView)
-        fetchAllFromAPI()
-
+        fetchAllFromAPI(from: url)
+        
     }
     
     func setTableView(on tableView: UITableView) {
@@ -44,8 +45,9 @@ class ViewController: UIViewController {
 extension ViewController {
     
     func setNavigationItems() {
-        view.backgroundColor = .white
-        navigationItem.title = "Персонажи"
+//        view.backgroundColor = .systemGreen
+//        navigationItem.rightBarButtonItem?.title = "next"
+        navigationItem.title = "Rick and Morty"
 //        navigationController?.navigationBar.setBackgroundImage(UIImage(named: "Image"), for: .default)
 //        navigationController?.hidesBarsOnTap = true
 //        navigationController?.hidesBarsOnSwipe = true
@@ -56,8 +58,6 @@ extension ViewController {
 
 //MARK: - tableview configurations
 extension ViewController : UITableViewDataSource {
-    
-    
     
     //MARK: - set constraints
     private func setConstraints(on tableView: UITableView) {
@@ -71,7 +71,6 @@ extension ViewController : UITableViewDataSource {
     private func registerCell(on tableView: UITableView) {
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell_id")
-
     }
     
    //MARK: - set cells
@@ -95,7 +94,7 @@ extension ViewController : UITableViewDataSource {
 
 // MARK: - network service
 extension ViewController {
-    func fetchAllFromAPI() {
+    func fetchAllFromAPI(from url: String) {
         let anonymousFunction = { (fetchedData: PostModel?) in
             DispatchQueue.main.async {
                 self.fetchedData = fetchedData
@@ -115,7 +114,7 @@ extension ViewController {
                 self.tableView.reloadData()
             }
         }
-        Network.shared.fetchPostModel(onCompletion: anonymousFunction)
+        Network.shared.fetchPostModel(url: url, onCompletion: anonymousFunction)
         self.tableView.reloadData()
     }
 }
