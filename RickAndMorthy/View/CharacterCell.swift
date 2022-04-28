@@ -99,16 +99,16 @@ extension CharacterCell {
         self.gender.text = character.gender
         
         //MARK: - image from URL
-//        if let url = URL(string: character.image!) {
-//            let task = URLSession.shared.dataTask(with: url) { data, response, error in
-//                guard let data = data, error == nil else { return }
-//
-//                DispatchQueue.main.async {
-//                    self.avatarImageView.image = UIImage(data: data)
-//                }
-//            }
-//            task.resume()
-//        }
+        if let url = URL(string: character.image!) {
+            let task = URLSession.shared.dataTask(with: url) { data, response, error in
+                guard let data = data, error == nil else { return }
+
+                DispatchQueue.main.async {
+                    self.avatarImageView.image = UIImage(data: data)
+                }
+            }
+            task.resume()
+        }
     }
 }
 
