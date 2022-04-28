@@ -32,7 +32,7 @@ final class CharacterCell: UITableViewCell {
         contentView.addSubview(nameLabel)
         contentView.addSubview(avatarImageView)
         
-//        self.setNameLabel()
+        self.setNameLabel()
         self.setAvatarImageView()
         
     }
@@ -61,10 +61,11 @@ extension CharacterCell {
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
+            avatarImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             avatarImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            avatarImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
-            avatarImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            avatarImageView.heightAnchor.constraint(equalToConstant: 50)
+            avatarImageView.bottomAnchor.constraint(equalTo: nameLabel.topAnchor),
+            avatarImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+//            avatarImageView.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
 }

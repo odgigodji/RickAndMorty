@@ -95,7 +95,7 @@ extension CharactersNavigationController : UITableViewDataSource {
     private func registerCell(on tableView: UITableView) {
         tableView.dataSource = self
         tableView.register(CharacterCell.self, forCellReuseIdentifier: "CharacterCell")
-        tableView.rowHeight = 150
+        tableView.rowHeight = 350
     }
     
    //MARK: - table view data source
