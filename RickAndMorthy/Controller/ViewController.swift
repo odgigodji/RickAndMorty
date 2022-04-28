@@ -30,8 +30,9 @@ class ViewController: UIViewController {
         
         setNavigationItems()
         setTableView(on: tableView)
-        url = page2
         fetchAllFromAPI(from: url)
+//        url = page2
+//        fetchAllFromAPI(from: page2)
         
     }
     
@@ -49,12 +50,19 @@ extension ViewController {
     func setNavigationItems() {
 //        view.backgroundColor = .systemGreen
 //        navigationItem.rightBarButtonItem?.title = "next"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next page", style: .plain, target: self, action: #selector(addTapped))
+
         navigationItem.title = "Rick and Morty"
 //        navigationController?.navigationBar.setBackgroundImage(UIImage(named: "Image"), for: .default)
 //        navigationController?.hidesBarsOnTap = true
 //        navigationController?.hidesBarsOnSwipe = true
 //        navigationController?.navigationBar.backgroundColor = .systemGray5
 //        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    @objc func addTapped() {
+        fetchAllFromAPI(from: page2)
+        print("tap")
     }
 }
 
@@ -63,7 +71,7 @@ extension ViewController : UITableViewDataSource {
     
     //MARK: - set constraints
     private func setConstraints(on tableView: UITableView) {
-        tableView.translatesAutoresizingMaskIntoConstraints = false //disable costr
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
