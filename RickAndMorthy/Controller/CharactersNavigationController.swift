@@ -19,9 +19,9 @@ final class CharactersNavigationController: UIViewController {
 //MARK: - list of constants
     
     var listOfCharacters = [Result?]()
-    var info : Info?
+    var pages : Pages?
     var fetchedData : PostModel?
-    private var url: String = "https://rickandmortyapi.com/api/character"
+    private var startUrl: String = "https://rickandmortyapi.com/api/character"
 //    private var page2: String = "https://rickandmortyapi.com/api/character?page=2"
     private let tableView = UITableView(frame: .zero, style: .grouped)
 
@@ -31,7 +31,7 @@ final class CharactersNavigationController: UIViewController {
         super.viewDidLoad()
         self.setNavigationItems()
         self.setTableView(on: tableView)
-        self.fetchAllFromAPI(from: url)
+        self.fetchAllData(from: startUrl)
     }
     
     private func setTableView(on tableView: UITableView) {
@@ -61,19 +61,19 @@ extension CharactersNavigationController {
     }
     
     @objc func nextPageTapped() {
-        guard let nextPage = info!.next else {
+        guard let nextPage = pages!.next else {
 //            navigationItem.rightBarButtonItem?.title = ""
             return
         }
-        fetchAllFromAPI(from: nextPage)
+        fetchAllData(from: nextPage)
     }
     
     @objc func prevPageTapped() {
-        guard let prevPage = info!.prev else {
+        guard let prevPage = pages!.prev else {
 //            navigationItem.rightBarButtonItem?.title = ""
             return
         }
-        fetchAllFromAPI(from: prevPage)
+        fetchAllData(from: prevPage)
     }
 }
 
@@ -118,24 +118,11 @@ extension CharactersNavigationController : UITableViewDataSource {
 
 // MARK: - network service
 extension CharactersNavigationController {
-    func fetchAllFromAPI(from url: String) {
+    func fetchAllData(from url: String) {
         let anonymousFunction = { (fetchedData: PostModel?) in
             DispatchQueue.main.async {
-//                self.fetchedData = fetchedData
-                
-//                print("-inFetchAllfromAPI")
-//                print(self.fetchedData!.info)
-//                print("------")
-//                print(self.fetchedData!.results)
-                
                 self.listOfCharacters = fetchedData!.results!
-                self.info = fetchedData!.info
-//                Network.shared.url = fetchedData!.info!.next
-                
-//                Network.shared.changeUrl()
-//                print("AFTER URL CHANGE")
-//                print(self.fetchedData!.results)
-                    
+                self.pages = fetchedData!.info
                 self.tableView.reloadData()
             }
         }

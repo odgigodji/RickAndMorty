@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - PostModel
 struct PostModel: Codable {
-    let info: Info?
+    let info: Pages?
     var results: [Result]?
 
     
@@ -20,9 +20,9 @@ struct PostModel: Codable {
 }
 
 // MARK: - Info
-struct Info: Codable {
-    let count: Int?
-    let pages: Int?
+struct Pages: Codable {
+//    let count: Int?
+//    let pages: Int?
     let next: String?
     let prev: String?
 //    enum CodingKeys: String, CodingKey {
