@@ -85,10 +85,11 @@ extension CharactersNavigationController : UITableViewDataSource {
     
     private func registerCell(on tableView: UITableView) {
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell_id")
+        tableView.register(CharacterCell.self, forCellReuseIdentifier: "CharacterCell")
+        tableView.rowHeight = 150
     }
     
-   //MARK: - set cells
+   //MARK: - table view data source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        guard let fetchedData = self.fetchedData else { return 0 }
 //        guard let listOfCharacters = fetchedData.result else { return 0 }
@@ -96,14 +97,14 @@ extension CharactersNavigationController : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell_id")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CharacterCell") as! CharacterCell
         guard let name = listOfCharacters[indexPath.row] else {
             return UITableViewCell()
         }
 
-        cell?.textLabel?.text = name.name
+        cell.courseName.text = name.name
 
-        return cell ?? UITableViewCell()
+        return cell
     }
 }
 
