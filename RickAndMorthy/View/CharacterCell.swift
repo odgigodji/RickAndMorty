@@ -9,7 +9,12 @@ import UIKit
 
 final class CharacterCell: UITableViewCell {
 
+//MARK: - list of variables
     let courseName = UILabel()
+    let species = UILabel()
+    let gender = UILabel()
+    let avatar = UIImage()
+    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
