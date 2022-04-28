@@ -69,7 +69,11 @@ extension CharactersNavigationController {
     }
     
     @objc func prevPageTapped() {
-        fetchAllFromAPI(from: url)
+        guard let prevPage = info!.prev else {
+//            navigationItem.rightBarButtonItem?.title = ""
+            return
+        }
+        fetchAllFromAPI(from: prevPage)
     }
 }
 
