@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     
     var listOfCharacters = [Result?]()
     var fetchedData: PostModel?
+//    var url: String = "https://rickandmortyapi.com/api/character"
     
     let tableView = UITableView(frame: .zero, style: .grouped)
     
@@ -47,7 +48,8 @@ class ViewController: UIViewController {
 //        print(result)
 //        tableView.reloadData()
     }
-    
-    
 }
 
+//protocol DataExchangeProtocol {
+//    func
+//}

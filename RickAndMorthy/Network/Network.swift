@@ -13,7 +13,7 @@ final class  Network {
     
     var fetchedData: PostModel?
     
-    private var url: String = "https://rickandmortyapi.com/api/character"
+    fileprivate var url: String = "https://rickandmortyapi.com/api/character"
     
 //    func fetchCharactersList(onCompletion: @escaping ([Result]?) -> ()) {
 //        guard let url = URL(string: url) else {
@@ -51,6 +51,15 @@ final class  Network {
         }
         task.resume()
     }
+    
+    
+    func changeUrl() {
+        guard let data = fetchedData else { return }
+        guard let info = data.info else { return }
+        guard let next = info.next else { return }
+//        self.url = next
+//        print("URL - \(url)")
+    }
 }
 
 //extension ViewController {
@@ -82,7 +91,12 @@ extension ViewController {
                 print(self.fetchedData!.results)
                 
                 self.listOfCharacters = fetchedData!.results!
+//                Network.shared.url = fetchedData!.info.!next
                 
+//                Network.shared.changeUrl()
+                print("AFTER URL CHANGE")
+                print(self.fetchedData!.results)
+                    
                 self.tableView.reloadData()
             }
         }
