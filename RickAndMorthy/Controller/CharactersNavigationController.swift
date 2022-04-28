@@ -19,6 +19,7 @@ final class CharactersNavigationController: UIViewController {
 //MARK: - list of constants
     
     var listOfCharacters = [Result?]()
+    var info : Info?
     var fetchedData : PostModel?
     private var url: String = "https://rickandmortyapi.com/api/character"
     private var page2: String = "https://rickandmortyapi.com/api/character?page=2"
@@ -31,9 +32,6 @@ final class CharactersNavigationController: UIViewController {
         self.setNavigationItems()
         self.setTableView(on: tableView)
         self.fetchAllFromAPI(from: url)
-//        url = page2
-//        fetchAllFromAPI(from: page2)
-        
     }
     
     private func setTableView(on tableView: UITableView) {
@@ -63,7 +61,10 @@ extension CharactersNavigationController {
     }
     
     @objc func nextPageTapped() {
-        fetchAllFromAPI(from: page2)
+        guard let nextPage = info!.next else {
+            return
+        }
+        fetchAllFromAPI(from: nextPage)
     }
     
     @objc func prevPageTapped() {
@@ -115,14 +116,15 @@ extension CharactersNavigationController {
     func fetchAllFromAPI(from url: String) {
         let anonymousFunction = { (fetchedData: PostModel?) in
             DispatchQueue.main.async {
-                self.fetchedData = fetchedData
+//                self.fetchedData = fetchedData
                 
 //                print("-inFetchAllfromAPI")
-                print(self.fetchedData!.info)
+//                print(self.fetchedData!.info)
 //                print("------")
 //                print(self.fetchedData!.results)
                 
                 self.listOfCharacters = fetchedData!.results!
+                self.info = fetchedData!.info
 //                Network.shared.url = fetchedData!.info!.next
                 
 //                Network.shared.changeUrl()
