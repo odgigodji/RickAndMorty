@@ -98,6 +98,7 @@ extension CharacterCell {
         self.nameLabel.text = character.name
         self.gender.text = character.gender
         
+        self.avatarImageView.image = UIImage(named: "loading")
         //MARK: - image from URL
         if let url = URL(string: character.image!) {
             let task = URLSession.shared.dataTask(with: url) { data, response, error in
