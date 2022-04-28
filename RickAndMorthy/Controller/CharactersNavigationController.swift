@@ -71,6 +71,7 @@ extension CharactersNavigationController {
     }
 }
 
+
 //MARK: - tableview configurations
 extension CharactersNavigationController : UITableViewDataSource {
     
@@ -97,23 +98,17 @@ extension CharactersNavigationController : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "CharacterCell") as! CharacterCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CharacterCell") as! CharacterCell
         guard let character = listOfCharacters[indexPath.row] else {
             return CharacterCell()
         }
-
-//        cell.courseName.text = character.name
-        cell = fillCharacterCell(from: character)
-        return cell
-    }
-    
-    private func fillCharacterCell(from character: Result) -> CharacterCell {
-        let cell = CharacterCell()
-        cell.courseName.text = character.name
+        
+        cell.fillCharacterCell(from: character)
         
         return cell
     }
 }
+
 
 // MARK: - network service
 extension CharactersNavigationController {

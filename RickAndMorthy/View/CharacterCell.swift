@@ -38,3 +38,10 @@ final class CharacterCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+extension CharacterCell {
+    func fillCharacterCell(from character: Result) {
+        self.courseName.text = character.name
+        self.gender.text = character.gender
+    }
+}
