@@ -32,9 +32,9 @@ final class CharacterCell: UITableViewCell {
         contentView.addSubview(nameLabel)
         contentView.addSubview(avatarImageView)
         
-        self.setNameLabel()
 //        avatarImageView.frame(forAlignmentRect: CGRect(origin: .init(x: 0, y: 0), size: CGSize(width: 50, height: 50)))
         self.setAvatarImageView()
+        self.setNameLabel()
 //        avatarImageView.makeRounded()
     }
     
@@ -51,9 +51,11 @@ extension CharacterCell {
         nameLabel.font = UIFont.systemFont(ofSize: 20)
         
         NSLayoutConstraint.activate([
-            nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
-            nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
-            nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            nameLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            nameLabel.bottomAnchor.constraint(equalTo: avatarImageView.topAnchor, constant: -20)
+//            nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
+//            nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
+//            nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
 //            nameLabel.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
@@ -71,11 +73,11 @@ extension CharacterCell {
 //            avatarImageView.heightAnchor.constraint(equalToConstant: 50)
             
             avatarImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            avatarImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            avatarImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -30),
             
             
             avatarImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 1.0 / 2.0),
-            avatarImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1.0 / 2.0)
+            avatarImageView.widthAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 1.0 / 2.0)
 //
         ])
     }
