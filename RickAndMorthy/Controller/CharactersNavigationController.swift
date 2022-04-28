@@ -67,7 +67,7 @@ extension CharactersNavigationController {
         }
         navigationItem.leftBarButtonItem?.title = "Prev page"
         fetchAllData(from: nextPage)
-        sleep(2)
+        sleep(1)
     }
     
     @objc func prevPageTapped() {
@@ -77,7 +77,7 @@ extension CharactersNavigationController {
         }
         navigationItem.rightBarButtonItem?.title = "Next page"
         fetchAllData(from: prevPage)
-        sleep(2)
+        sleep(1)
     }
 }
 
@@ -102,7 +102,7 @@ extension CharactersNavigationController : UITableViewDataSource {
     
    //MARK: - table view data source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listOfCharacters.count 
+        return listOfCharacters.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
