@@ -21,35 +21,101 @@ class ViewController: UIViewController {
     var fetchedData: PostModel?
 //    var url: String = "https://rickandmortyapi.com/api/character"
     
-    let tableView = UITableView(frame: .zero, style: .grouped)
+    private let tableView = UITableView(frame: .zero, style: .grouped)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setNavigationItems()
         setTableView(on: tableView)
-        
-//        fetchDataFromAPI()
         fetchAllFromAPI()
+
+    }
+    
+    func setTableView(on tableView: UITableView) {
+        view.addSubview(tableView)
         
-        guard let fetchedData = fetchedData else {
-            print("fetchedData is nil")
-            return
-        }
-        
-        print("=======INFO=======")
-        print(fetchedData.info!)
-//        guard let result = fetchedData.results else {
-//            print("result is nil")
-//            return
-//        }
-//        listOfCharacters = result
-//        print("-------+++++")
-//        print(result)
-//        tableView.reloadData()
+        setConstraints(on: tableView)
+        registerCell(on: tableView)
     }
 }
 
-//protocol DataExchangeProtocol {
-//    func
-//}
+// MARK: - Navigation Controller configure
+extension ViewController {
+    
+    func setNavigationItems() {
+        view.backgroundColor = .white
+        navigationItem.title = "Персонажи"
+//        navigationController?.navigationBar.setBackgroundImage(UIImage(named: "Image"), for: .default)
+//        navigationController?.hidesBarsOnTap = true
+//        navigationController?.hidesBarsOnSwipe = true
+//        navigationController?.navigationBar.backgroundColor = .systemGray5
+//        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+}
+
+//MARK: - tableview configurations
+extension ViewController : UITableViewDataSource {
+    
+    
+    
+    //MARK: - set constraints
+    private func setConstraints(on tableView: UITableView) {
+        tableView.translatesAutoresizingMaskIntoConstraints = false //disable costr
+        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+    }
+    
+    private func registerCell(on tableView: UITableView) {
+        tableView.dataSource = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell_id")
+
+    }
+    
+   //MARK: - set cells
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        guard let fetchedData = self.fetchedData else { return 0 }
+//        guard let listOfCharacters = fetchedData.result else { return 0 }
+        return listOfCharacters.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell_id")
+        guard let name = listOfCharacters[indexPath.row] else {
+            return UITableViewCell()
+        }
+
+        cell?.textLabel?.text = name.name
+
+        return cell ?? UITableViewCell()
+    }
+}
+
+// MARK: - network service
+extension ViewController {
+    func fetchAllFromAPI() {
+        let anonymousFunction = { (fetchedData: PostModel?) in
+            DispatchQueue.main.async {
+                self.fetchedData = fetchedData
+                
+//                print("-inFetchAllfromAPI")
+//                print(self.fetchedData!.info)
+//                print("------")
+//                print(self.fetchedData!.results)
+                
+                self.listOfCharacters = fetchedData!.results!
+//                Network.shared.url = fetchedData!.info!.next
+                
+//                Network.shared.changeUrl()
+//                print("AFTER URL CHANGE")
+//                print(self.fetchedData!.results)
+                    
+                self.tableView.reloadData()
+            }
+        }
+        Network.shared.fetchPostModel(onCompletion: anonymousFunction)
+        self.tableView.reloadData()
+    }
+}

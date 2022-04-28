@@ -10,8 +10,9 @@ import Foundation
 // MARK: - PostModel
 struct PostModel: Codable {
     let info: Info?
-    let results: [Result]?
+    var results: [Result]?
 
+    
 //    enum CodingKeys: String, CodingKey {
 //        case info
 //        case results
@@ -67,10 +68,10 @@ struct Location: Codable {
     let name: String?
     let url: String?
 
-    enum CodingKeys: String, CodingKey {
-        case name
-        case url
-    }
+//    enum CodingKeys: String, CodingKey {
+//        case name
+//        case url
+//    }
 }
 
 

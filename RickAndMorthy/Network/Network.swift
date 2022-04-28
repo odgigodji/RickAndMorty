@@ -11,7 +11,7 @@ final class  Network {
     
     static let shared = Network()
     
-    var fetchedData: PostModel?
+//    var fetchedData: PostModel?
     
     fileprivate var url: String = "https://rickandmortyapi.com/api/character"
     
@@ -54,9 +54,9 @@ final class  Network {
     
     
     func changeUrl() {
-        guard let data = fetchedData else { return }
-        guard let info = data.info else { return }
-        guard let next = info.next else { return }
+//        guard let data = fetchedData else { return }
+//        guard let info = data.info else { return }
+//        guard let next = info.next else { return }
 //        self.url = next
 //        print("URL - \(url)")
     }
@@ -79,31 +79,7 @@ final class  Network {
 //}
 
 
-extension ViewController {
-    func fetchAllFromAPI() {
-        let anonymousFunction = { (fetchedData: PostModel?) in
-            DispatchQueue.main.async {
-                self.fetchedData = fetchedData
-                
-                print("-inFetchAllfromAPI")
-                print(self.fetchedData!.info)
-                print("------")
-                print(self.fetchedData!.results)
-                
-                self.listOfCharacters = fetchedData!.results!
-//                Network.shared.url = fetchedData!.info.!next
-                
-//                Network.shared.changeUrl()
-                print("AFTER URL CHANGE")
-                print(self.fetchedData!.results)
-                    
-                self.tableView.reloadData()
-            }
-        }
-        Network.shared.fetchPostModel(onCompletion: anonymousFunction)
-        self.tableView.reloadData()
-    }
-}
+
 
 
 
