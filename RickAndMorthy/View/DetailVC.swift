@@ -65,17 +65,35 @@ final class DetailVC: UINavigationController {
 */
 
 final class DetailVC: UIViewController {
+    //MARK: - members of DetailVC
     var character : Result?
-    
     var safeArea : UILayoutGuide!
     let avatarImageView = CustomImageView()
+//    let scrollView = UIScrollView()
+//    let contentView = UIView()
+    
+    //MARK: - sctollView constants
+    private let scrollView: UIScrollView = {
+        let view = UIScrollView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    private let scrollStackViewContainer: UIStackView = {
+        let view = UIStackView()
+        view.axis = .vertical
+        view.spacing = 0
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 //        self.modalPresentationStyle = .fullScreen
-        view.backgroundColor = .white
+        view.backgroundColor = .systemGray2
         safeArea = view.layoutMarginsGuide
         
+        setupScrollView()
         setupImage()
         setupData()
     }
@@ -85,11 +103,14 @@ final class DetailVC: UIViewController {
         
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
         avatarImageView.contentMode = .scaleAspectFit
+//
+//        avatarImageView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+//        avatarImageView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 40).isActive = true
+//        avatarImageView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 0.9).isActive = true
+//        avatarImageView.heightAnchor.constraint(equalTo: avatarImageView.widthAnchor).isActive = true
         
-        avatarImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        avatarImageView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 50).isActive = true
-        avatarImageView.widthAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier: 0.9).isActive = true
-        avatarImageView.heightAnchor.constraint(equalTo: avatarImageView.widthAnchor).isActive = true
+//        avatarImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+//        avatarImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40).isActive = true
     }
     
     private func setupData() {
@@ -98,3 +119,27 @@ final class DetailVC: UIViewController {
         }
     }
 }
+
+//MARK: - setupScrollView
+//extension DetailVC {
+//    private func setupScrollView() {
+//        print("setup scroll view")
+//        scrollView.translatesAutoresizingMaskIntoConstraints = false
+//        contentView.translatesAutoresizingMaskIntoConstraints = false
+//
+//        view.addSubview(scrollView)
+//        scrollView.addSubview(contentView)
+//
+//        scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//        scrollView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+//        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+//        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+//
+//        contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+//        contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+//        contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+//        contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+//
+//        contentView.backgroundColor = .green
+//    }
+//}
