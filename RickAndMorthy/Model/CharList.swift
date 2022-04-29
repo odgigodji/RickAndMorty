@@ -43,7 +43,7 @@ struct Result: Codable {
 //    let origin: Location?
 //    let location: Location?
     let image: String?
-//    let episode: [String]?
+    let episodes: [String]?
 //    let url: String?
 //    let created: String?
 

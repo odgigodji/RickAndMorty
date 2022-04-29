@@ -131,7 +131,7 @@ extension CharactersNavigationController: UITableViewDelegate {
         }
 //        let newVC = DetailVC(about: character, rootViewController: self)
         let newVC = DetailVC()
-        newVC.modalPresentationStyle = .fullScreen
+//        newVC.modalPresentationStyle = .fullScreen
         newVC.character = character
         
         self.present(newVC, animated: true)

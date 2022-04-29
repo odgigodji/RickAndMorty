@@ -7,68 +7,11 @@
 
 import UIKit
 
-/*
-final class DetailVC: UINavigationController {
-    //MARK: - variables
-    var character : Result?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.modalPresentationStyle = .fullScreen
-        view.backgroundColor = .white
-        
-        label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        label.bottomAnchor.constraint(equalTo: view.topAnchor, constant: -20).isActive = true
-        
-        setNavigataionController()
-//        sleep(2)
-//        self.dismiss(animated: true, completion: nil)
-        print("viedDidLoad")
-    }
-    
-    let label : UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 20)
-        
-       return label
-    }()
-    
-    init(about character: Result, rootViewController: UIViewController) {
-        super.init(rootViewController: UIViewController())
-        self.character = character
-        
-        print(self.character!.name!)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func setNavigataionController() {
-        self.navigationItem.title = "TTTER"
-        
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(tapped))
-    }
-    
-    @objc  func tapped() {
-        print("back")
-    }
-    
-    func setLabelConstr() {
-        NSLayoutConstraint.activate([
-            
-        ])
-    }
-}
-*/
-
 final class DetailVC: UIViewController {
     //MARK: - members of DetailVC
     var character : Result?
 //    var safeArea : UILayoutGuide!
-    let avatarImageView = CustomImageView()
+//    let avatarImageView = CustomImageView()
 //    let scrollView = UIScrollView()
 //    let contentView = UIView()
     
@@ -87,23 +30,18 @@ final class DetailVC: UIViewController {
         return view
     }()
     
-    private let subView1 : CustomImageView = {
+    private let avatarImageView : CustomImageView = {
         let IV = CustomImageView()
         IV.translatesAutoresizingMaskIntoConstraints = false
         IV.widthAnchor.constraint(equalToConstant: 400).isActive = true
 //        IV.widthAnchor.constraint(equalToConstant: 400).isActive = true
+        IV.widthAnchor.constraint(equalTo: IV.widthAnchor, multiplier: 0.9).isActive = true
+
         IV.heightAnchor.constraint(equalTo: IV.widthAnchor,constant: 20).isActive = true
         return IV
     }()
     
-//    private let subView1: UIView = {
-//        let view = UIView()
-//        view.heightAnchor.constraint(equalToConstant: 400).isActive = true
-//        view.backgroundColor = UIColor.blue
-//        return view
-//    }()
-    
-    private let subview2: UILabel = {
+    private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20)
 
@@ -116,15 +54,25 @@ final class DetailVC: UIViewController {
     
     private func setLabel() {
         guard let character = character else {
-            subview2.text = "out of data"
+            descriptionLabel.text = "out of data"
             return
         }
+//        let countOfEpisodes = 1
+//        if let episodes = character.episodes! {
+//            countOfEpisodes = character.episodes!.count
+//        } else {
+//            countOfEpisodes = 1
+//        }
+//        guard let episods
 //отображаться имя, раса, пол, статус, аватарка, последнее известное местоположение, кол-во эпизодов, в которых
-        subview2.text = """
+        descriptionLabel.text = """
 name: \(String(character.name!))
 species: \(String(character.species!))
+gender: \(String(character.gender!))
+location: -
 
 """
+//number of episodes: \(String(character.episodes!.count))
     }
 //    private let subview3: UIView = {
 //        let view = UIView()
@@ -150,20 +98,20 @@ species: \(String(character.species!))
 //        safeArea = view.layoutMarginsGuide
         
         setupScrollView()
-        setupImage()
+//        setupImage()
         setLabel()
         setupData()
     }
     
     private func setupImage() {
-        subView1.addSubview(avatarImageView)
+        avatarImageView.addSubview(avatarImageView)
         
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
         avatarImageView.contentMode = .scaleAspectFit
 //
-        avatarImageView.centerXAnchor.constraint(equalTo: subView1.centerXAnchor).isActive = true
-        avatarImageView.topAnchor.constraint(equalTo: subView1.topAnchor, constant: 40).isActive = true
-        avatarImageView.widthAnchor.constraint(equalTo: subView1.widthAnchor, multiplier: 0.9).isActive = true
+        avatarImageView.centerXAnchor.constraint(equalTo: avatarImageView.centerXAnchor).isActive = true
+        avatarImageView.topAnchor.constraint(equalTo: avatarImageView.topAnchor, constant: 40).isActive = true
+        avatarImageView.widthAnchor.constraint(equalTo: avatarImageView.widthAnchor, multiplier: 0.9).isActive = true
         avatarImageView.heightAnchor.constraint(equalTo: avatarImageView.widthAnchor).isActive = true
         
 //        avatarImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
@@ -197,8 +145,8 @@ extension DetailVC {
     }
     
     private func configureContainerView() {
-        scrollStackViewContainer.addArrangedSubview(subView1)
-        scrollStackViewContainer.addArrangedSubview(subview2)
+        scrollStackViewContainer.addArrangedSubview(avatarImageView)
+        scrollStackViewContainer.addArrangedSubview(descriptionLabel)
 //        scrollStackViewContainer.addArrangedSubview(subview3)
     }
 }
