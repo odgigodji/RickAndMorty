@@ -73,7 +73,7 @@ extension CharacterCell {
         self.nameLabel.text = character.name
         self.gender.text = character.gender
         
-        self.avatarImageView.image = UIImage(named: "loading")
+//        self.avatarImageView.image = UIImage(named: "loading")
         //MARK: - image from URL
         guard let url = URL(string: character.image!) else {
             return
