@@ -43,7 +43,7 @@ final class DetailVC: UIViewController {
     
     private let descriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 20)
+        label.font = UIFont.systemFont(ofSize: 25)
 
         label.numberOfLines = 0
         label.sizeToFit()
@@ -64,7 +64,12 @@ final class DetailVC: UIViewController {
 //            countOfEpisodes = 1
 //        }
 //        guard let episods
+        
 //отображаться имя, раса, пол, статус, аватарка, последнее известное местоположение, кол-во эпизодов, в которых
+//        guard let episode = character.episodes else {
+//            return
+//        }
+//        print(episode)
         descriptionLabel.text = """
 name: \(String(character.name!))
 species: \(String(character.species!))
