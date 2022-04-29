@@ -72,18 +72,29 @@ final class DetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.modalPresentationStyle = .fullScreen
+//        self.modalPresentationStyle = .fullScreen
         view.backgroundColor = .white
         safeArea = view.layoutMarginsGuide
+        
+        setupImage()
+        setupData()
     }
     
     private func setupImage() {
         view.addSubview(avatarImageView)
         
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
+        avatarImageView.contentMode = .scaleAspectFit
+        
         avatarImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         avatarImageView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 50).isActive = true
         avatarImageView.widthAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier: 0.9).isActive = true
         avatarImageView.heightAnchor.constraint(equalTo: avatarImageView.widthAnchor).isActive = true
+    }
+    
+    private func setupData() {
+        if let character = character, let url = URL(string: character.image!) {
+            avatarImageView.loadImage(from: url)
+        }
     }
 }

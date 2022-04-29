@@ -67,7 +67,7 @@ extension CharactersNavigationController {
         }
         navigationItem.leftBarButtonItem?.title = "Prev page"
         fetchAllData(from: nextPage)
-//        sleep(1)
+        sleep(1)
     }
     
     @objc func prevPageTapped() {
