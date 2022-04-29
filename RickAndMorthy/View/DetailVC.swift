@@ -12,8 +12,9 @@ final class DetailVC: UINavigationController {
         super.viewDidLoad()
         navigationItem.title = "Rick and Morty"
     }
-    override init(rootViewController: UIViewController) {
+    init(about character: Result, rootViewController: UIViewController) {
         super.init(rootViewController: UIViewController())
+        print(character.name)
     }
     
     required init?(coder aDecoder: NSCoder) {

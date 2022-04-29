@@ -124,12 +124,14 @@ extension CharactersNavigationController: UITableViewDelegate {
     }
     
     private func goToDetailView(on indexPath: IndexPath) {
-        lazy var article = listOfCharacters[indexPath.row]
-        let name = listOfCharacters[indexPath.row]!.name!
+        guard let character = listOfCharacters[indexPath.row] else {
+            return
+        }
+//        let name = listOfCharacters[indexPath.row]!.name!
         
-        let newView = DetailVC(rootViewController: self)
+        let newView = DetailVC(about: character, rootViewController: self)
         self.present(newView, animated: true)
-        print(name)
+//        print(name)
     }
 }
 
