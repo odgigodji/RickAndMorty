@@ -10,10 +10,6 @@ import UIKit
 final class DetailVC: UIViewController {
     //MARK: - members of DetailVC
     var character : Result?
-//    var safeArea : UILayoutGuide!
-//    let avatarImageView = CustomImageView()
-//    let scrollView = UIScrollView()
-//    let contentView = UIView()
     
     //MARK: - scrollView constants
     private let scrollView: UIScrollView = {
@@ -34,9 +30,7 @@ final class DetailVC: UIViewController {
         let IV = CustomImageView()
         IV.translatesAutoresizingMaskIntoConstraints = false
         IV.widthAnchor.constraint(equalToConstant: 400).isActive = true
-//        IV.widthAnchor.constraint(equalToConstant: 400).isActive = true
-        IV.widthAnchor.constraint(equalTo: IV.widthAnchor, multiplier: 0.9).isActive = true
-
+//        IV.widthAnchor.constraint(equalTo: IV.widthAnchor, multiplier: 0.9).isActive = true
         IV.heightAnchor.constraint(equalTo: IV.widthAnchor,constant: 20).isActive = true
         return IV
     }()
@@ -57,77 +51,25 @@ final class DetailVC: UIViewController {
             descriptionLabel.text = "out of data"
             return
         }
-//        guard let episodes = character.episodes else {
-//            descriptionLabel.text = "episodes not found"
-//            return
-//        }
-//        print(episodes)
-//        let countOfEpisodes = 1
-//        if let episodes = character.episodes! {
-//            countOfEpisodes = character.episodes!.count
-//        } else {
-//            countOfEpisodes = 1
-//        }
-//        guard let episods
-        
-//отображаться имя, раса, пол, статус, аватарка, последнее известное местоположение, кол-во эпизодов, в которых
-//        guard let episode = character.episodes else {
-//            return
-//        }
         
         descriptionLabel.text = """
 name: \(String(character.name!))
 species: \(String(character.species!))
 gender: \(String(character.gender!))
+status: \(String(character.status!))
 location: -
 amount of episodes: -
 """
-//status: \(String(character.status!))
-//number of episodes: \(String(character.episodes!.count))
     }
-//    private let subview3: UIView = {
-//        let view = UIView()
-//        view.heightAnchor.constraint(equalToConstant: 400).isActive = true
-//        view.backgroundColor = UIColor.gray
-//    return view
-//    }()
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.modalPresentationStyle = .fullScreen
         view.backgroundColor = .systemGray2
-//        safeArea = view.layoutMarginsGuide
         
         setupScrollView()
-//        setupImage()
         setLabel()
         setupData()
     }
-    
-//    private func setupImage() {
-//        avatarImageView.addSubview(avatarImageView)
-//
-//        avatarImageView.translatesAutoresizingMaskIntoConstraints = false
-//        avatarImageView.contentMode = .scaleAspectFit
-////
-//        avatarImageView.centerXAnchor.constraint(equalTo: avatarImageView.centerXAnchor).isActive = true
-//        avatarImageView.topAnchor.constraint(equalTo: avatarImageView.topAnchor, constant: 40).isActive = true
-//        avatarImageView.widthAnchor.constraint(equalTo: avatarImageView.widthAnchor, multiplier: 0.9).isActive = true
-//        avatarImageView.heightAnchor.constraint(equalTo: avatarImageView.widthAnchor).isActive = true
-//
-//        avatarImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-//        avatarImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40).isActive = true
-//    }
     
     private func setupData() {
         if let character = character, let url = URL(string: character.image!) {
@@ -158,6 +100,5 @@ extension DetailVC {
     private func configureContainerView() {
         scrollStackViewContainer.addArrangedSubview(avatarImageView)
         scrollStackViewContainer.addArrangedSubview(descriptionLabel)
-//        scrollStackViewContainer.addArrangedSubview(subview3)
     }
 }

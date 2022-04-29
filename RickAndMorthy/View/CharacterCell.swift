@@ -64,6 +64,8 @@ extension CharacterCell {
         //MARK: - image from URL
         guard let url = URL(string: character.image!) else { return }
         self.avatarImageView.loadImage(from: url)
+        
+//        self.nameLabel.text = character.episodes?[0] ?? "her"
     }
 }
 
