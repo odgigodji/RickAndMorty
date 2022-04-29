@@ -36,13 +36,14 @@ struct Pages: Codable {
 struct Result: Codable {
 //    let id: Int?
     let name: String?
-    let status: String?
+//    let status: String?
     let species: String?
 //    let type: String?
     let gender: String?
 //    let origin: Location?
-    let location: Location?
     let image: String?
+    
+    let location: Location?
     let episodes: [String]?
 //    let url: String?
 //    let created: String?
@@ -66,7 +67,7 @@ struct Result: Codable {
 // MARK: - Location
 struct Location: Codable {
     let name: String?
-    let url: String?
+//    let url: String?
 
 //    enum CodingKeys: String, CodingKey {
 //        case name

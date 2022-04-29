@@ -57,6 +57,11 @@ final class DetailVC: UIViewController {
             descriptionLabel.text = "out of data"
             return
         }
+//        guard let episodes = character.episodes else {
+//            descriptionLabel.text = "episodes not found"
+//            return
+//        }
+//        print(episodes)
 //        let countOfEpisodes = 1
 //        if let episodes = character.episodes! {
 //            countOfEpisodes = character.episodes!.count
@@ -69,15 +74,15 @@ final class DetailVC: UIViewController {
 //        guard let episode = character.episodes else {
 //            return
 //        }
-//        print(episode)
+        
         descriptionLabel.text = """
 name: \(String(character.name!))
 species: \(String(character.species!))
 gender: \(String(character.gender!))
-status: \(String(character.status!))
 location: -
-
+amount of episodes: -
 """
+//status: \(String(character.status!))
 //number of episodes: \(String(character.episodes!.count))
     }
 //    private let subview3: UIView = {

@@ -129,13 +129,9 @@ extension CharactersNavigationController: UITableViewDelegate {
         guard let character = listOfCharacters[indexPath.row] else {
             return
         }
-//        let newVC = DetailVC(about: character, rootViewController: self)
         let newVC = DetailVC()
-//        newVC.modalPresentationStyle = .fullScreen
         newVC.character = character
-        
         self.present(newVC, animated: true)
-//        print(name)
     }
 }
 
@@ -150,7 +146,16 @@ extension CharactersNavigationController {
             }
         }
         Network.shared.fetchPostModel(url: url, onCompletion: anonymousFunction)
-//        print("data is feched")
-//        self.tableView.reloadData()
     }
+    
+//    func fetchCharacterData(from url: String) {
+//        let anonymousFunction = { (character: Result?) in
+//            DispatchQueue.main.async {
+////                self.listOfCharacters = character!.location
+////                self.pages = fetchedData!.info
+//                self.tableView.reloadData()
+//            }
+//        }
+//        Network.shared.fetchResult(url: url, onCompletion: anonymousFunction)
+//    }
 }
