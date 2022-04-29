@@ -18,24 +18,11 @@ final class CharacterCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        //image
-//        avatar.frame = contentView.bounds
-        
-        
-        
-        //-------
-        
-        // Set any attributes of your UI components here.
-        
-        
-        // Add the UI components
         contentView.addSubview(nameLabel)
         contentView.addSubview(avatarImageView)
         
-//        avatarImageView.frame(forAlignmentRect: CGRect(origin: .init(x: 0, y: 0), size: CGSize(width: 50, height: 50)))
         self.setAvatarImageView()
         self.setNameLabel()
-//        avatarImageView.makeRounded()
     }
     
     required init?(coder: NSCoder) {
@@ -60,21 +47,12 @@ extension CharacterCell {
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-//            avatarImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-//            avatarImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-//            avatarImageView.bottomAnchor.constraint(equalTo: nameLabel.topAnchor),
-//            avatarImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            
-            
-//            avatarImageView.heightAnchor.constraint(equalToConstant: 50)
-            
             avatarImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             avatarImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -30),
             
             
             avatarImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 1.0 / 2.0),
             avatarImageView.widthAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 1.0 / 2.0)
-//
         ])
     }
 }

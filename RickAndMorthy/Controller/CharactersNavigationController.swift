@@ -22,10 +22,9 @@ final class CharactersNavigationController: UIViewController {
     var pages : Pages?
     var fetchedData : PostModel?
     private var startUrl: String = "https://rickandmortyapi.com/api/character"
-//    private var page2: String = "https://rickandmortyapi.com/api/character?page=2"
     private let tableView = UITableView(frame: .zero, style: .grouped)
 
-//MARK: - MainController methods
+//MARK: - NavigationController methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,22 +122,13 @@ extension CharactersNavigationController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         goToDetailView(on: indexPath)
     }
-//
+    
     private func goToDetailView(on indexPath: IndexPath) {
-//        print("did")
-        
         lazy var article = listOfCharacters[indexPath.row]
         let name = listOfCharacters[indexPath.row]!.name!
         
         print(name)
     }
-//    private func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return UITableView.automaticDimension
-//    }
-//
-//    private func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return UITableView.automaticDimension
-//    }
 }
 
 // MARK: - network service
