@@ -13,7 +13,7 @@ final class CharacterCell: UITableViewCell {
     let nameLabel = UILabel()
     let species = UILabel()
     let gender = UILabel()
-    let avatarImageView = UIImageView()
+    let avatarImageView = CustomImageView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -50,7 +50,6 @@ extension CharacterCell {
             avatarImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             avatarImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -30),
             
-            
             avatarImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 1.0 / 2.0),
             avatarImageView.widthAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 1.0 / 2.0)
         ])
@@ -76,16 +75,20 @@ extension CharacterCell {
         
         self.avatarImageView.image = UIImage(named: "loading")
         //MARK: - image from URL
-        if let url = URL(string: character.image!) {
-            let task = URLSession.shared.dataTask(with: url) { data, response, error in
-                guard let data = data, error == nil else { return }
-
-                DispatchQueue.main.async {
-                    self.avatarImageView.image = UIImage(data: data)
-                }
-            }
-            task.resume()
+        guard let url = URL(string: character.image!) else {
+            return
         }
+        self.avatarImageView.loadImage(from: url)
+//        if let url = URL(string: character.image!) {
+//            let task = URLSession.shared.dataTask(with: url) { data, response, error in
+//                guard let data = data, error == nil else { return }
+//
+//                DispatchQueue.main.async {
+//                    self.avatarImageView.image = UIImage(data: data)
+//                }
+//            }
+//            task.resume()
+//        }
     }
 }
 

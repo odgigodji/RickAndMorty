@@ -7,6 +7,7 @@
 
 import UIKit
 
+/*
 final class DetailVC: UINavigationController {
     //MARK: - variables
     var character : Result?
@@ -16,6 +17,10 @@ final class DetailVC: UINavigationController {
         
         self.modalPresentationStyle = .fullScreen
         view.backgroundColor = .white
+        
+        label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        label.bottomAnchor.constraint(equalTo: view.topAnchor, constant: -20).isActive = true
+        
         setNavigataionController()
 //        sleep(2)
 //        self.dismiss(animated: true, completion: nil)
@@ -26,7 +31,8 @@ final class DetailVC: UINavigationController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 20)
-        return label
+        
+       return label
     }()
     
     init(about character: Result, rootViewController: UIViewController) {
@@ -48,5 +54,22 @@ final class DetailVC: UINavigationController {
     
     @objc  func tapped() {
         print("back")
+    }
+    
+    func setLabelConstr() {
+        NSLayoutConstraint.activate([
+            
+        ])
+    }
+}
+*/
+
+final class DetailVC: UIViewController {
+    var character : Result?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.modalPresentationStyle = .fullScreen
+        view.backgroundColor = .white
     }
 }

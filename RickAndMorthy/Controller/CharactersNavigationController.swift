@@ -66,7 +66,7 @@ extension CharactersNavigationController {
         }
         navigationItem.leftBarButtonItem?.title = "Prev page"
         fetchAllData(from: nextPage)
-        sleep(1)
+//        sleep(1)
     }
     
     @objc func prevPageTapped() {
@@ -76,7 +76,7 @@ extension CharactersNavigationController {
         }
         navigationItem.rightBarButtonItem?.title = "Next page"
         fetchAllData(from: prevPage)
-        sleep(1)
+//        sleep(1)
     }
 }
 
@@ -127,7 +127,9 @@ extension CharactersNavigationController: UITableViewDelegate {
         guard let character = listOfCharacters[indexPath.row] else {
             return
         }
-        let newVC = DetailVC(about: character, rootViewController: self)
+//        let newVC = DetailVC(about: character, rootViewController: self)
+        let newVC = DetailVC()
+        newVC.character = character
         
         self.present(newVC, animated: true)
 //        print(name)

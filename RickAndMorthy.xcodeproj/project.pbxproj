@@ -17,7 +17,7 @@
 		FA6ADD4A28147F3200E7D058 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6ADD4828147F3200E7D058 /* LaunchScreen.storyboard */; };
 		FA6B7862281C18E0001B11E7 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B7861281C18E0001B11E7 /* DetailVC.swift */; };
 		FA74C012281B1BA100D96854 /* CharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74C011281B1BA100D96854 /* CharacterCell.swift */; };
-		FA74C014281B475400D96854 /* loadImaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74C013281B475400D96854 /* loadImaged.swift */; };
+		FA74C014281B475400D96854 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74C013281B475400D96854 /* CustomImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +33,7 @@
 		FA6ADD4B28147F3200E7D058 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA6B7861281C18E0001B11E7 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		FA74C011281B1BA100D96854 /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
-		FA74C013281B475400D96854 /* loadImaged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = loadImaged.swift; path = RickAndMorthy/loadImaged.swift; sourceTree = SOURCE_ROOT; };
+		FA74C013281B475400D96854 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomImageView.swift; path = RickAndMorthy/View/CustomImageView.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +52,7 @@
 			children = (
 				FA74C011281B1BA100D96854 /* CharacterCell.swift */,
 				FA6B7861281C18E0001B11E7 /* DetailVC.swift */,
+				FA74C013281B475400D96854 /* CustomImageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -88,7 +89,6 @@
 			isa = PBXGroup;
 			children = (
 				FA35FA5D28172E220039EE20 /* Network.swift */,
-				FA74C013281B475400D96854 /* loadImaged.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -193,7 +193,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA74C014281B475400D96854 /* loadImaged.swift in Sources */,
+				FA74C014281B475400D96854 /* CustomImageView.swift in Sources */,
 				FA6ADD4228147F2F00E7D058 /* CharactersNavigationController.swift in Sources */,
 				FA6ADD3E28147F2F00E7D058 /* AppDelegate.swift in Sources */,
 				FA6ADD4028147F2F00E7D058 /* SceneDelegate.swift in Sources */,
