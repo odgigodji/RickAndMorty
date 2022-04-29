@@ -8,16 +8,42 @@
 import UIKit
 
 final class DetailVC: UINavigationController {
+    //MARK: - constants
+    var character : Result?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Rick and Morty"
+        
+        self.modalPresentationStyle = .fullScreen
+        view.backgroundColor = .white
+        setNavigataionController()
+        print("viedDidLoad")
     }
+    
+    let label : UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     init(about character: Result, rootViewController: UIViewController) {
         super.init(rootViewController: UIViewController())
-        print(character.name)
+        self.character = character
+        
+        print(self.character!.name!)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setNavigataionController() {
+        self.navigationItem.title = "TTTER"
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next page", style: .plain, target: self, action: #selector(tapped))
+    }
+    
+    @objc  func tapped() {
+            print("back")
     }
 }

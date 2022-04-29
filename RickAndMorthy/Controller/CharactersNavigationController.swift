@@ -127,10 +127,9 @@ extension CharactersNavigationController: UITableViewDelegate {
         guard let character = listOfCharacters[indexPath.row] else {
             return
         }
-//        let name = listOfCharacters[indexPath.row]!.name!
+        let newVC = DetailVC(about: character, rootViewController: self)
         
-        let newView = DetailVC(about: character, rootViewController: self)
-        self.present(newView, animated: true)
+        self.present(newVC, animated: true)
 //        print(name)
     }
 }
