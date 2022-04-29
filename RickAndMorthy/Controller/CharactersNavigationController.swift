@@ -50,6 +50,7 @@ final class CharactersNavigationController: UIViewController {
 extension CharactersNavigationController {
     
     private func setNavigationBar() {
+        view.backgroundColor = .white
         navigationItem.title = "Rick and Morty"
     }
     

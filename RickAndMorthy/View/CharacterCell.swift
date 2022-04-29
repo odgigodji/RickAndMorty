@@ -56,39 +56,29 @@ extension CharacterCell {
     }
 }
 
-extension UIImageView {
+//extension UIImageView {
 
-    func makeRounded() {
-
-        self.layer.borderWidth = 1
-        self.layer.masksToBounds = false
-        self.layer.borderColor = UIColor.black.cgColor
-        self.layer.cornerRadius = self.frame.height / 2
-        self.clipsToBounds = true
-    }
-}
+//    func makeRounded() {
+//
+//        self.layer.borderWidth = 1
+//        self.layer.masksToBounds = false
+//        self.layer.borderColor = UIColor.black.cgColor
+//        self.layer.cornerRadius = self.frame.height / 2
+//        self.clipsToBounds = true
+//    }
+//}
 
 extension CharacterCell {
     func fillCharacterCell(from character: Result) {
         self.nameLabel.text = character.name
         self.gender.text = character.gender
         
-//        self.avatarImageView.image = UIImage(named: "loading")
         //MARK: - image from URL
         guard let url = URL(string: character.image!) else {
+            print("url is nil")
             return
         }
         self.avatarImageView.loadImage(from: url)
-//        if let url = URL(string: character.image!) {
-//            let task = URLSession.shared.dataTask(with: url) { data, response, error in
-//                guard let data = data, error == nil else { return }
-//
-//                DispatchQueue.main.async {
-//                    self.avatarImageView.image = UIImage(data: data)
-//                }
-//            }
-//            task.resume()
-//        }
     }
 }
 
