@@ -61,6 +61,8 @@ extension CharacterCell {
     private func setInfoLabel() {
         infoLabel.translatesAutoresizingMaskIntoConstraints = false
         infoLabel.font = UIFont.systemFont(ofSize: 20)
+        infoLabel.numberOfLines = 0
+        infoLabel.sizeToFit()
         
         NSLayoutConstraint.activate([
             infoLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
@@ -83,8 +85,9 @@ extension CharacterCell {
     
     private func setInfoLabelText(from character: Result) {
         self.infoLabel.text = """
-\(String(character.gender!))
 \(String(character.species!))
+
+\(String(character.gender!))
 """
     }
 }
