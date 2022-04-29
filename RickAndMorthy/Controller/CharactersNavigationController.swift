@@ -121,10 +121,17 @@ extension CharactersNavigationController : UITableViewDataSource {
 extension CharactersNavigationController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        print("did")
+        goToDetailView(on: indexPath)
     }
 //
+    private func goToDetailView(on indexPath: IndexPath) {
+//        print("did")
+        
+        lazy var article = listOfCharacters[indexPath.row]
+        let name = listOfCharacters[indexPath.row]!.name!
+        
+        print(name)
+    }
 //    private func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
 //        return UITableView.automaticDimension
 //    }
