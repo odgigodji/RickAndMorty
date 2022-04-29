@@ -12,10 +12,13 @@ final class CustomImageView : UIImageView {
     
     func loadImage(from url: URL) {
         
-    self.image = UIImage(named: "loading")
+        self.image = UIImage(named: "loading")
 //    self.image = nil
+        if let task = task {
+            task.cancel()
+        }
         
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+        task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data, let newImage = UIImage(data: data) else {
                 print("couldn't load image from \(url)")
                 return
