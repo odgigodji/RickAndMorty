@@ -74,6 +74,7 @@ final class DetailVC: UIViewController {
 name: \(String(character.name!))
 species: \(String(character.species!))
 gender: \(String(character.gender!))
+status: \(String(character.status!))
 location: -
 
 """
@@ -108,20 +109,20 @@ location: -
         setupData()
     }
     
-    private func setupImage() {
-        avatarImageView.addSubview(avatarImageView)
-        
-        avatarImageView.translatesAutoresizingMaskIntoConstraints = false
-        avatarImageView.contentMode = .scaleAspectFit
+//    private func setupImage() {
+//        avatarImageView.addSubview(avatarImageView)
 //
-        avatarImageView.centerXAnchor.constraint(equalTo: avatarImageView.centerXAnchor).isActive = true
-        avatarImageView.topAnchor.constraint(equalTo: avatarImageView.topAnchor, constant: 40).isActive = true
-        avatarImageView.widthAnchor.constraint(equalTo: avatarImageView.widthAnchor, multiplier: 0.9).isActive = true
-        avatarImageView.heightAnchor.constraint(equalTo: avatarImageView.widthAnchor).isActive = true
-        
+//        avatarImageView.translatesAutoresizingMaskIntoConstraints = false
+//        avatarImageView.contentMode = .scaleAspectFit
+////
+//        avatarImageView.centerXAnchor.constraint(equalTo: avatarImageView.centerXAnchor).isActive = true
+//        avatarImageView.topAnchor.constraint(equalTo: avatarImageView.topAnchor, constant: 40).isActive = true
+//        avatarImageView.widthAnchor.constraint(equalTo: avatarImageView.widthAnchor, multiplier: 0.9).isActive = true
+//        avatarImageView.heightAnchor.constraint(equalTo: avatarImageView.widthAnchor).isActive = true
+//
 //        avatarImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
 //        avatarImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40).isActive = true
-    }
+//    }
     
     private func setupData() {
         if let character = character, let url = URL(string: character.image!) {
