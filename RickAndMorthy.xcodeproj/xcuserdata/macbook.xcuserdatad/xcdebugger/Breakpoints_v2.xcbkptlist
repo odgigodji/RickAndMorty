@@ -14,10 +14,10 @@
             filePath = "RickAndMorthy/Controller/CharactersNavigationController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
-            landmarkName = "tableView(_:didSelectRowAt:)"
-            landmarkType = "7">
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "CharactersNavigationController"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -30,9 +30,9 @@
             filePath = "RickAndMorthy/Controller/CharactersNavigationController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "prevPageTapped()"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "nextPageTapped()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
