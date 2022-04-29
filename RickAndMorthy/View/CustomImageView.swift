@@ -8,7 +8,7 @@
 import UIKit
 
 final class CustomImageView : UIImageView {
-    
+    var task: URLSessionDataTask!
     
     func loadImage(from url: URL) {
         
