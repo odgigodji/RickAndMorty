@@ -67,9 +67,23 @@ final class DetailVC: UINavigationController {
 final class DetailVC: UIViewController {
     var character : Result?
     
+    var safeArea : UILayoutGuide!
+    let avatarImageView = CustomImageView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.modalPresentationStyle = .fullScreen
         view.backgroundColor = .white
+        safeArea = view.layoutMarginsGuide
+    }
+    
+    private func setupImage() {
+        view.addSubview(avatarImageView)
+        
+        avatarImageView.translatesAutoresizingMaskIntoConstraints = false
+        avatarImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        avatarImageView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 50).isActive = true
+        avatarImageView.widthAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier: 0.9).isActive = true
+        avatarImageView.heightAnchor.constraint(equalTo: avatarImageView.widthAnchor).isActive = true
     }
 }

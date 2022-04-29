@@ -9,12 +9,13 @@ import UIKit
 
 final class CharacterCell: UITableViewCell {
 
-//MARK: - list of variables
+    //MARK: - list of variables
     let nameLabel = UILabel()
     let species = UILabel()
     let gender = UILabel()
     let avatarImageView = CustomImageView()
     
+    //MARK: - init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -49,7 +50,6 @@ extension CharacterCell {
         NSLayoutConstraint.activate([
             avatarImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             avatarImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -30),
-            
             avatarImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 1.0 / 2.0),
             avatarImageView.widthAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 1.0 / 2.0)
         ])
