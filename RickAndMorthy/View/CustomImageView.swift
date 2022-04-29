@@ -24,17 +24,19 @@ final class CustomImageView : UIImageView {
     
         //MARK: - load image from cache
         if let imageFromCache = imageCache.object(forKey: url.absoluteString as AnyObject) as? UIImage {
-            self.image = imageFromCache
+            image = imageFromCache
             removeSpinner()
             return
         }
         
+        //MARK: - URLSession
         task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data, let newImage = UIImage(data: data) else {
                 print("couldn't load image from \(url)")
                 return
             }
             
+            //MARK: - add image to cache
             imageCache.setObject(newImage, forKey: url.absoluteString as AnyObject)
             DispatchQueue.main.async {
                 self.image = newImage

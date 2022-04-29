@@ -77,7 +77,8 @@ extension CharactersNavigationController {
         }
         navigationItem.rightBarButtonItem?.title = "Next page"
         fetchAllData(from: prevPage)
-//        sleep(1)
+        sleep(1)
+//        usleep(10000)
     }
 }
 

@@ -56,28 +56,13 @@ extension CharacterCell {
     }
 }
 
-//extension UIImageView {
-
-//    func makeRounded() {
-//
-//        self.layer.borderWidth = 1
-//        self.layer.masksToBounds = false
-//        self.layer.borderColor = UIColor.black.cgColor
-//        self.layer.cornerRadius = self.frame.height / 2
-//        self.clipsToBounds = true
-//    }
-//}
-
 extension CharacterCell {
     func fillCharacterCell(from character: Result) {
         self.nameLabel.text = character.name
         self.gender.text = character.gender
         
         //MARK: - image from URL
-        guard let url = URL(string: character.image!) else {
-            print("url is nil")
-            return
-        }
+        guard let url = URL(string: character.image!) else { return }
         self.avatarImageView.loadImage(from: url)
     }
 }
