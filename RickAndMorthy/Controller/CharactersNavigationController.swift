@@ -66,8 +66,6 @@ extension CharactersNavigationController {
             return
         }
         navigationItem.leftBarButtonItem?.title = "Prev page"
-        fetchAllData(from: nextPage)
-//        sleep(1)
     }
     
     @objc func prevPageTapped() {
@@ -77,8 +75,6 @@ extension CharactersNavigationController {
         }
         navigationItem.rightBarButtonItem?.title = "Next page"
         fetchAllData(from: prevPage)
-//        sleep(1)
-//        usleep(10000)
     }
 }
 
@@ -147,15 +143,4 @@ extension CharactersNavigationController {
         }
         Network.shared.fetchPostModel(url: url, onCompletion: anonymousFunction)
     }
-    
-//    func fetchCharacterData(from url: String) {
-//        let anonymousFunction = { (character: Result?) in
-//            DispatchQueue.main.async {
-////                self.listOfCharacters = character!.location
-////                self.pages = fetchedData!.info
-//                self.tableView.reloadData()
-//            }
-//        }
-//        Network.shared.fetchResult(url: url, onCompletion: anonymousFunction)
-//    }
 }

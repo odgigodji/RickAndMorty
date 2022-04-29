@@ -28,22 +28,4 @@ final class  Network {
         }
         task.resume()
     }
-    
-    func fetchResult(url: String, onCompletion: @escaping (Result?) -> ()) {
-        guard let url = URL(string: url) else {
-            return
-        }
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let data = data else {
-                print("data was nil")
-                return
-            }
-            guard let character = try? JSONDecoder().decode(Result.self, from: data) else {
-                    print("couldn't decode JSON")
-                return
-            }
-            onCompletion(character)
-        }
-        task.resume()
-    }
 }

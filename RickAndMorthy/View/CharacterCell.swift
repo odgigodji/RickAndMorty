@@ -12,7 +12,6 @@ final class CharacterCell: UITableViewCell {
     //MARK: - list of variables
     let nameLabel = UILabel()
     let species = UILabel()
-//    let gender = UILabel()
     let avatarImageView = CustomImageView()
     let infoLabel = UILabel()
     
@@ -71,6 +70,7 @@ extension CharacterCell {
     }
 }
 
+//MARK: - fill Cell
 extension CharacterCell {
     func fillCharacterCell(from character: Result) {
         self.nameLabel.text = character.name
