@@ -12,8 +12,9 @@ final class CharacterCell: UITableViewCell {
     //MARK: - list of variables
     let nameLabel = UILabel()
     let species = UILabel()
-    let gender = UILabel()
+//    let gender = UILabel()
     let avatarImageView = CustomImageView()
+    let infoLabel = UILabel()
     
     //MARK: - init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -21,9 +22,11 @@ final class CharacterCell: UITableViewCell {
         
         contentView.addSubview(nameLabel)
         contentView.addSubview(avatarImageView)
+        contentView.addSubview(infoLabel)
         
         self.setAvatarImageView()
         self.setNameLabel()
+        self.setInfoLabel()
     }
     
     required init?(coder: NSCoder) {
@@ -36,7 +39,7 @@ extension CharacterCell {
     
     private func setNameLabel() {
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.font = UIFont.systemFont(ofSize: 20)
+        nameLabel.font = UIFont.systemFont(ofSize: 25)
         
         NSLayoutConstraint.activate([
             nameLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
@@ -54,18 +57,35 @@ extension CharacterCell {
             avatarImageView.widthAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 1.0 / 2.0)
         ])
     }
+    
+    private func setInfoLabel() {
+        infoLabel.translatesAutoresizingMaskIntoConstraints = false
+        infoLabel.font = UIFont.systemFont(ofSize: 20)
+        
+        NSLayoutConstraint.activate([
+            infoLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            infoLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 20)
+        ])
+    }
 }
 
 extension CharacterCell {
     func fillCharacterCell(from character: Result) {
         self.nameLabel.text = character.name
-        self.gender.text = character.gender
         
         //MARK: - image from URL
         guard let url = URL(string: character.image!) else { return }
         self.avatarImageView.loadImage(from: url)
         
-//        self.nameLabel.text = character.episodes?[0] ?? "her"
+        //MARK: - set info label text
+        setInfoLabelText(from: character)
+    }
+    
+    private func setInfoLabelText(from character: Result) {
+        self.infoLabel.text = """
+\(String(character.gender!))
+\(String(character.species!))
+"""
     }
 }
 
