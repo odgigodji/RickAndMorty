@@ -103,19 +103,35 @@ final class DetailVC: UIViewController {
 //        return view
 //    }()
     
-    private let subview2: UIView = {
-        let view = UIView()
-        view.heightAnchor.constraint(equalToConstant: 400).isActive = true
-        view.backgroundColor = UIColor.cyan
-    return view
+    private let subview2: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 20)
+
+        label.numberOfLines = 0
+        label.sizeToFit()
+        label.textColor = UIColor.black
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
-    private let subview3: UIView = {
-        let view = UIView()
-        view.heightAnchor.constraint(equalToConstant: 400).isActive = true
-        view.backgroundColor = UIColor.gray
-    return view
-    }()
+    private func setLabel() {
+        guard let character = character else {
+            subview2.text = "out of data"
+            return
+        }
+//отображаться имя, раса, пол, статус, аватарка, последнее известное местоположение, кол-во эпизодов, в которых
+        subview2.text = """
+name: \(String(character.name!))
+species: \(String(character.species!))
+
+"""
+    }
+//    private let subview3: UIView = {
+//        let view = UIView()
+//        view.heightAnchor.constraint(equalToConstant: 400).isActive = true
+//        view.backgroundColor = UIColor.gray
+//    return view
+//    }()
     
     
     
@@ -135,6 +151,7 @@ final class DetailVC: UIViewController {
         
         setupScrollView()
         setupImage()
+        setLabel()
         setupData()
     }
     
@@ -182,6 +199,6 @@ extension DetailVC {
     private func configureContainerView() {
         scrollStackViewContainer.addArrangedSubview(subView1)
         scrollStackViewContainer.addArrangedSubview(subview2)
-        scrollStackViewContainer.addArrangedSubview(subview3)
+//        scrollStackViewContainer.addArrangedSubview(subview3)
     }
 }
