@@ -96,6 +96,7 @@ extension CharactersNavigationController : UITableViewDataSource {
     
     private func registerCell(on tableView: UITableView) {
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.register(CharacterCell.self, forCellReuseIdentifier: "CharacterCell")
         tableView.rowHeight = 350
     }
@@ -116,6 +117,22 @@ extension CharactersNavigationController : UITableViewDataSource {
     }
 }
 
+// MARK: - UITableViewDelegate
+extension CharactersNavigationController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        print("did")
+    }
+//
+//    private func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        return UITableView.automaticDimension
+//    }
+//
+//    private func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        return UITableView.automaticDimension
+//    }
+}
 
 // MARK: - network service
 extension CharactersNavigationController {
@@ -128,6 +145,7 @@ extension CharactersNavigationController {
             }
         }
         Network.shared.fetchPostModel(url: url, onCompletion: anonymousFunction)
+//        print("data is feched")
 //        self.tableView.reloadData()
     }
 }

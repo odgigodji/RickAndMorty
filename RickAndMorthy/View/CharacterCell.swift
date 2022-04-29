@@ -13,7 +13,7 @@ final class CharacterCell: UITableViewCell {
     let nameLabel = UILabel()
     let species = UILabel()
     let gender = UILabel()
-    let avatarImageView = UIImageView(image: UIImage(named: "loading"))
+    let avatarImageView = UIImageView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -53,10 +53,6 @@ extension CharacterCell {
         NSLayoutConstraint.activate([
             nameLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             nameLabel.bottomAnchor.constraint(equalTo: avatarImageView.topAnchor, constant: -20)
-//            nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
-//            nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
-//            nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-//            nameLabel.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
     
