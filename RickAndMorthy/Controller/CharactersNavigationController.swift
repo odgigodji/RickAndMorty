@@ -127,6 +127,8 @@ extension CharactersNavigationController: UITableViewDelegate {
         lazy var article = listOfCharacters[indexPath.row]
         let name = listOfCharacters[indexPath.row]!.name!
         
+        let newView = DetailVC(rootViewController: self)
+        self.present(newView, animated: true)
         print(name)
     }
 }

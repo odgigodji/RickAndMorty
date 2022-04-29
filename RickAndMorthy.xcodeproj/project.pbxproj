@@ -15,6 +15,7 @@
 		FA6ADD4528147F2F00E7D058 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6ADD4328147F2F00E7D058 /* Main.storyboard */; };
 		FA6ADD4728147F3200E7D058 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA6ADD4628147F3200E7D058 /* Assets.xcassets */; };
 		FA6ADD4A28147F3200E7D058 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6ADD4828147F3200E7D058 /* LaunchScreen.storyboard */; };
+		FA6B7862281C18E0001B11E7 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B7861281C18E0001B11E7 /* DetailVC.swift */; };
 		FA74C012281B1BA100D96854 /* CharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74C011281B1BA100D96854 /* CharacterCell.swift */; };
 		FA74C014281B475400D96854 /* loadImaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74C013281B475400D96854 /* loadImaged.swift */; };
 /* End PBXBuildFile section */
@@ -30,6 +31,7 @@
 		FA6ADD4628147F3200E7D058 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA6ADD4928147F3200E7D058 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA6ADD4B28147F3200E7D058 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA6B7861281C18E0001B11E7 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		FA74C011281B1BA100D96854 /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
 		FA74C013281B475400D96854 /* loadImaged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = loadImaged.swift; path = RickAndMorthy/loadImaged.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -49,6 +51,7 @@
 			isa = PBXGroup;
 			children = (
 				FA74C011281B1BA100D96854 /* CharacterCell.swift */,
+				FA6B7861281C18E0001B11E7 /* DetailVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 				FA6ADD3E28147F2F00E7D058 /* AppDelegate.swift in Sources */,
 				FA6ADD4028147F2F00E7D058 /* SceneDelegate.swift in Sources */,
 				FA74C012281B1BA100D96854 /* CharacterCell.swift in Sources */,
+				FA6B7862281C18E0001B11E7 /* DetailVC.swift in Sources */,
 				FA35FA8F2819897D0039EE20 /* CharList.swift in Sources */,
 				FA35FA5E28172E220039EE20 /* Network.swift in Sources */,
 			);
