@@ -8,7 +8,7 @@
 import UIKit
 
 final class DetailVC: UINavigationController {
-    //MARK: - constants
+    //MARK: - variables
     var character : Result?
     
     override func viewDidLoad() {
@@ -17,12 +17,15 @@ final class DetailVC: UINavigationController {
         self.modalPresentationStyle = .fullScreen
         view.backgroundColor = .white
         setNavigataionController()
+//        sleep(2)
+//        self.dismiss(animated: true, completion: nil)
         print("viedDidLoad")
     }
     
     let label : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 20)
         return label
     }()
     
@@ -40,10 +43,10 @@ final class DetailVC: UINavigationController {
     private func setNavigataionController() {
         self.navigationItem.title = "TTTER"
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next page", style: .plain, target: self, action: #selector(tapped))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(tapped))
     }
     
     @objc  func tapped() {
-            print("back")
+        print("back")
     }
 }
