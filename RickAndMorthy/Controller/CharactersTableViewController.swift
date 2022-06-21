@@ -11,18 +11,17 @@ import UIKit
 
 final class CharactersTableViewController: UITableViewController {
     
-//MARK: - Constants
-  private enum Constants {
-    static let startUrl = "https://rickandmortyapi.com/api/character"
-    static let cellId = "CharacterCell"
-}
+    //MARK: - Constants
+    private enum Constants {
+        static let startUrl = "https://rickandmortyapi.com/api/character"
+        static let cellId = "CharacterCell"
+    }
     
+    //MARK: - list of variables
     private var listOfCharacters = [Result?]()
     private var pages : Pages?
     private var fetchedData : PostModel?
 
-//MARK: - NavigationController methods
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -73,7 +72,6 @@ final class CharactersTableViewController: UITableViewController {
 //MARK: - UITableViewDelegate, UITableViewDataSource
 extension CharactersTableViewController {
     
-   //MARK: - table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listOfCharacters.count
     }
@@ -87,26 +85,25 @@ extension CharactersTableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        350
-    }
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 350 }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         goToDetailView(on: indexPath)
     }
-
 }
+
 
 // MARK: - network service
 extension CharactersTableViewController {
     func fetchAllData(from url: String) {
-        let anonymousFunction = { (fetchedData: PostModel?) in
+        
+        let completionHandler = { (fetchedData: PostModel?) in
             DispatchQueue.main.async {
                 self.listOfCharacters = fetchedData!.results!
                 self.pages = fetchedData!.info
                 self.tableView.reloadData()
             }
         }
-        Network.shared.fetchPostModel(url: url, onCompletion: anonymousFunction)
+        Network.shared.fetchPostModel(url: url, onCompletion: completionHandler)
     }
 }
