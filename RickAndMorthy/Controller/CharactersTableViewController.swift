@@ -7,15 +7,17 @@
 
 import UIKit
 
+
+
 final class CharactersTableViewController: UITableViewController {
     
-//MARK: - list of constants
-    
-    let cellId = "CharacterCell"
+  private enum Constants {
+    static let startUrl = "https://rickandmortyapi.com/api/character"
+    static let cellId = "CharacterCell"
+}
     var listOfCharacters = [Result?]()
     var pages : Pages?
     var fetchedData : PostModel?
-    private var startUrl: String = "https://rickandmortyapi.com/api/character"
 
 //MARK: - NavigationController methods
     
@@ -33,11 +35,10 @@ final class CharactersTableViewController: UITableViewController {
         //MARK: - register Cells
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(CharacterCell.self, forCellReuseIdentifier: cellId)
-//        tableView.rowHeight = 350
+        tableView.register(CharacterCell.self, forCellReuseIdentifier: Constants.cellId)
         
         //MARK: - Fetch All Data
-        self.fetchAllData(from: startUrl)
+        self.fetchAllData(from: Constants.startUrl)
     }
     
     //MARK: - Butons's actions
@@ -76,7 +77,7 @@ extension CharactersTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId) as! CharacterCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellId) as! CharacterCell
         guard let character = listOfCharacters[indexPath.row] else {
             return CharacterCell()
         }
