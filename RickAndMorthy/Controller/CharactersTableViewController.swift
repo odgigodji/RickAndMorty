@@ -16,7 +16,7 @@ final class CharactersTableViewController: UITableViewController {
     }
     
     //MARK: - list of variables
-    private var listOfCharacters = [Result?]()
+    private var listOfCharacters = [Result]()
     private var pages : Pages?
     private var fetchedData : PostModel?
 
@@ -60,7 +60,7 @@ final class CharactersTableViewController: UITableViewController {
     
     //MARK: - Go To DetailView
     private func goToDetailView(on indexPath: IndexPath) {
-        guard let character = listOfCharacters[indexPath.row] else { return }
+        let character = listOfCharacters[indexPath.row]
         let newVC = DetailVC()
         newVC.character = character
         self.present(newVC, animated: true)
@@ -71,7 +71,7 @@ final class CharactersTableViewController: UITableViewController {
         
         let completionHandler = { (fetchedData: PostModel?) in
             DispatchQueue.main.async {
-                self.listOfCharacters = fetchedData!.results!
+                self.listOfCharacters = fetchedData!.results
                 self.pages = fetchedData!.info
                 self.tableView.reloadData()
             }
@@ -86,9 +86,7 @@ final class CharactersTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellId) as! CharacterCell
-        guard let character = listOfCharacters[indexPath.row] else {
-            return CharacterCell()
-        }
+        let character = listOfCharacters[indexPath.row]
         cell.fillCharacterCell(from: character)
         return cell
     }

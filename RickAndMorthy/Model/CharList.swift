@@ -9,8 +9,8 @@ import Foundation
 
 // MARK: - PostModel
 struct PostModel: Codable {
-    let info: Pages?
-    var results: [Result]?
+    let info: Pages
+    var results: [Result]
 }
 
 // MARK: - Info
