@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 final class CharactersTableViewController: UITableViewController {
     
     //MARK: - Constants
@@ -43,7 +41,7 @@ final class CharactersTableViewController: UITableViewController {
     }
     
     //MARK: - Butons's actions
-    @objc func nextPageTapped() {
+    @objc private func nextPageTapped() {
         guard let nextPage = pages!.next else {
             navigationItem.rightBarButtonItem?.title = ""
             return
@@ -51,7 +49,7 @@ final class CharactersTableViewController: UITableViewController {
         navigationItem.leftBarButtonItem?.title = "Prev page"
         fetchAllData(from: nextPage)
     }
-    @objc func prevPageTapped() {
+    @objc private func prevPageTapped() {
         guard let prevPage = pages!.prev else {
             navigationItem.leftBarButtonItem?.title = ""
             return
@@ -67,11 +65,21 @@ final class CharactersTableViewController: UITableViewController {
         newVC.character = character
         self.present(newVC, animated: true)
     }
-}
-
-//MARK: - UITableViewDelegate, UITableViewDataSource
-extension CharactersTableViewController {
     
+    //MARK: - network service
+    private func fetchAllData(from url: String) {
+        
+        let completionHandler = { (fetchedData: PostModel?) in
+            DispatchQueue.main.async {
+                self.listOfCharacters = fetchedData!.results!
+                self.pages = fetchedData!.info
+                self.tableView.reloadData()
+            }
+        }
+        Network.shared.fetchPostModel(url: url, onCompletion: completionHandler)
+    }
+
+    //MARK: - UITableViewDelegate, UITableViewDataSource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listOfCharacters.count
     }
@@ -89,21 +97,5 @@ extension CharactersTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         goToDetailView(on: indexPath)
-    }
-}
-
-
-// MARK: - network service
-extension CharactersTableViewController {
-    func fetchAllData(from url: String) {
-        
-        let completionHandler = { (fetchedData: PostModel?) in
-            DispatchQueue.main.async {
-                self.listOfCharacters = fetchedData!.results!
-                self.pages = fetchedData!.info
-                self.tableView.reloadData()
-            }
-        }
-        Network.shared.fetchPostModel(url: url, onCompletion: completionHandler)
     }
 }
