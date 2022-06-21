@@ -11,13 +11,15 @@ import UIKit
 
 final class CharactersTableViewController: UITableViewController {
     
+//MARK: - Constants
   private enum Constants {
     static let startUrl = "https://rickandmortyapi.com/api/character"
     static let cellId = "CharacterCell"
 }
-    var listOfCharacters = [Result?]()
-    var pages : Pages?
-    var fetchedData : PostModel?
+    
+    private var listOfCharacters = [Result?]()
+    private var pages : Pages?
+    private var fetchedData : PostModel?
 
 //MARK: - NavigationController methods
     
