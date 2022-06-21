@@ -21,11 +21,11 @@ struct Pages: Codable {
 
 // MARK: - Result
 struct Result: Codable {
-    let name: String?
-    let status: String?
-    let species: String?
-    let gender: String?
-    let image: String?
+    let name: String
+    let status: String
+    let species: String
+    let gender: String
+    let image: String
     
 //    let location: Location?
 //    let episodes: [String]?

@@ -56,12 +56,10 @@ final class DetailVC: UIViewController {
     }
     
     private func setupData() {
-        if let character = character, let url = URL(string: character.image!) {
+        if let character = character, let url = URL(string: character.image) {
             avatarImageView.loadImage(from: url)
         }
     }
-    
-    
 }
 
 //MARK: - setupScrollView
@@ -89,10 +87,10 @@ extension DetailVC {
             return
         }
         descriptionLabel.text = """
-name: \(String(character.name!))
-species: \(String(character.species!))
-gender: \(String(character.gender!))
-status: \(String(character.status!))
+name: \(String(character.name))
+species: \(String(character.species))
+gender: \(String(character.gender))
+status: \(String(character.status))
 location: -
 amount of episodes: -
 """

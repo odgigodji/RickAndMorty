@@ -76,7 +76,7 @@ extension CharacterCell {
         self.nameLabel.text = character.name
         
         //MARK: - image from URL
-        guard let url = URL(string: character.image!) else { return }
+        guard let url = URL(string: character.image) else { return }
         self.avatarImageView.loadImage(from: url)
         
         //MARK: - set info label text
@@ -85,9 +85,9 @@ extension CharacterCell {
     
     private func setInfoLabelText(from character: Result) {
         self.infoLabel.text = """
-\(String(character.species!))
+\(String(character.species))
 
-\(String(character.gender!))
+\(String(character.gender))
 """
     }
 }
