@@ -34,7 +34,7 @@ final class CharactersTableViewController: UITableViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(CharacterCell.self, forCellReuseIdentifier: cellId)
-        tableView.rowHeight = 350
+//        tableView.rowHeight = 350
         
         //MARK: - Fetch All Data
         self.fetchAllData(from: startUrl)
@@ -82,6 +82,10 @@ extension CharactersTableViewController {
         }
         cell.fillCharacterCell(from: character)
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        350
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
