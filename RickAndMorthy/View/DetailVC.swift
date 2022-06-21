@@ -11,7 +11,7 @@ final class DetailVC: UIViewController {
     //MARK: - members of DetailVC
     var character : Result?
     
-    //MARK: - scrollView constants
+    //MARK: - scrollView variables
     private let scrollView: UIScrollView = {
         let view = UIScrollView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -37,7 +37,6 @@ final class DetailVC: UIViewController {
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 25)
-
         label.numberOfLines = 0
         label.sizeToFit()
         label.textColor = UIColor.black

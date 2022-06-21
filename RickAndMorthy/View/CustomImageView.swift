@@ -10,18 +10,16 @@ import UIKit
 let imageCache = NSCache<AnyObject, AnyObject>()
 
 final class CustomImageView : UIImageView {
-    var task: URLSessionDataTask!
-    let spinner = UIActivityIndicatorView(style: .medium)
+    private var task: URLSessionDataTask!
+    private let spinner = UIActivityIndicatorView(style: .medium)
     
     func loadImage(from url: URL) {
         
         self.image = nil
         addSpiner()
         
-        if let task = task {
-            task.cancel()
-        }
-    
+        if let task = task { task.cancel() }
+        
         //MARK: - load image from cache
         if let imageFromCache = imageCache.object(forKey: url.absoluteString as AnyObject) as? UIImage {
             image = imageFromCache
